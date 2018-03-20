@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7290a09a-2058-48e3-848a-babb7b5e7569" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/GAM.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/lstrohm.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/gam.py" afterPath="$PROJECT_DIR$/gam.py" />
-    </list>
+    <list default="true" id="7290a09a-2058-48e3-848a-babb7b5e7569" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="36" />
     <option name="y" value="12" />
     <option name="width" value="1306" />
@@ -135,7 +127,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="36" y="12" width="1306" height="843" extended-state="0" />
+    <frame x="36" y="12" width="1306" height="843" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16998468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
