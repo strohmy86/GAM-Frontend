@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7290a09a-2058-48e3-848a-babb7b5e7569" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/GAM.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/lstrohm.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/gam.py" afterPath="$PROJECT_DIR$/gam.py" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="gam.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gam.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="86" column="47" lean-forward="false" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
+              <folding>
+                <element signature="e#1407#1857#0" expanded="false" />
+                <element signature="e#3180#5254#0" expanded="false" />
+                <element signature="e#5310#10604#0" expanded="false" />
+                <element signature="e#10654#13577#0" expanded="false" />
+                <element signature="e#13629#17514#0" expanded="false" />
+                <element signature="e#17572#19196#0" expanded="false" />
+                <element signature="e#19249#22362#0" expanded="false" />
+                <element signature="e#22387#24965#0" expanded="false" />
+                <element signature="e#25035#27789#0" expanded="false" />
+                <element signature="e#27854#29703#0" expanded="false" />
+                <element signature="e#29768#32211#0" expanded="false" />
+                <element signature="e#32272#34483#0" expanded="false" />
+                <element signature="e#34544#36694#0" expanded="false" />
+                <element signature="e#36760#39703#0" expanded="false" />
+                <element signature="e#39753#40856#0" expanded="false" />
+                <element signature="e#40913#44306#0" expanded="false" />
+                <element signature="e#44360#46509#0" expanded="false" />
+                <element signature="e#46554#49254#0" expanded="false" />
+                <element signature="e#49300#50706#0" expanded="false" />
+                <element signature="e#50747#53239#0" expanded="false" />
+                <element signature="e#53280#55911#0" expanded="false" />
+                <element signature="e#53787#54227#0" expanded="false" />
+                <element signature="e#54297#54648#0" expanded="false" />
+                <element signature="e#54716#54967#0" expanded="false" />
+                <element signature="e#55033#55289#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/gam.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="36" />
+    <option name="y" value="12" />
+    <option name="width" value="1306" />
+    <option name="height" value="843" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GAM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GAM" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="terminal" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7290a09a-2058-48e3-848a-babb7b5e7569" name="Default" comment="" />
+      <created>1521551100150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1521551100150</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="36" y="12" width="1306" height="843" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16998468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/gam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="86" column="47" lean-forward="false" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
+          <folding>
+            <element signature="e#1407#1857#0" expanded="false" />
+            <element signature="e#3180#5254#0" expanded="false" />
+            <element signature="e#5310#10604#0" expanded="false" />
+            <element signature="e#10654#13577#0" expanded="false" />
+            <element signature="e#13629#17514#0" expanded="false" />
+            <element signature="e#17572#19196#0" expanded="false" />
+            <element signature="e#19249#22362#0" expanded="false" />
+            <element signature="e#22387#24965#0" expanded="false" />
+            <element signature="e#25035#27789#0" expanded="false" />
+            <element signature="e#27854#29703#0" expanded="false" />
+            <element signature="e#29768#32211#0" expanded="false" />
+            <element signature="e#32272#34483#0" expanded="false" />
+            <element signature="e#34544#36694#0" expanded="false" />
+            <element signature="e#36760#39703#0" expanded="false" />
+            <element signature="e#39753#40856#0" expanded="false" />
+            <element signature="e#40913#44306#0" expanded="false" />
+            <element signature="e#44360#46509#0" expanded="false" />
+            <element signature="e#46554#49254#0" expanded="false" />
+            <element signature="e#49300#50706#0" expanded="false" />
+            <element signature="e#50747#53239#0" expanded="false" />
+            <element signature="e#53280#55911#0" expanded="false" />
+            <element signature="e#53787#54227#0" expanded="false" />
+            <element signature="e#54297#54648#0" expanded="false" />
+            <element signature="e#54716#54967#0" expanded="false" />
+            <element signature="e#55033#55289#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

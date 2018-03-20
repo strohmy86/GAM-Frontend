@@ -25,6 +25,8 @@
 # This program relies on GAM to function. You must install and configure it before using this program.
 # GAM can be found at: https://github.com/jay0lee/GAM
 
+# See line 349 for a domain specific setting that will need changed.
+
 import os
 import time
 import sys
@@ -56,6 +58,8 @@ def main_menu():  # Main Menu
         print('4)\tGroup Management')
         print('5)\tClassroom Management')
         print('6)\tDevice Management')
+        print('7)\tEmail Management')
+        print('8)\tBulk Operations')
         print('0)\tExit')
         print('\n')
 
@@ -74,6 +78,13 @@ def main_menu():  # Main Menu
             classroom()
         elif selection1 == '6':
             devices()
+        elif selection1 == '7':
+            email()
+        elif selection1 == '8':
+            print('COMING SOON!!')
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
         else:
             print("Unknown Option Selected!")
             print('\n')
@@ -346,7 +357,7 @@ def groups():  # Groups Management Main Menu
 
         if selection == '1':  # Create group menu item
             name = input('What is the name of the group to be created? ')
-            cmd = '~/bin/gam/gam create group ' + name + '@madisonrams.net'
+            cmd = '~/bin/gam/gam create group ' + name + '@madisonrams.net'  # PLEASE CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -959,6 +970,417 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             time.sleep(2)
             input("Press ENTER to Continue...")
             devices4_3()
+
+
+def email():  # Email Management main menu
+    while True:
+        print('\n')
+        print('Email Management Menu:')
+        print('\n')
+        print('1)\tUser Signature and Vacation Message')
+        print('2)\tLabels and Filters')
+        print('3)\tIMAP and POP Settings')
+        print('4)\tSend As Settings')
+        print('5)\tProfile Settings')
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # Edit User's signature
+            email1()
+        elif selection == '2':  # Edit a user's labels and filters
+            email2()
+        elif selection == '3':  # IMAP and POP settings
+            email3()
+        elif selection == '4':  # Send As address settings
+            email4()
+        elif selection == '5':  # Profile Settings
+            email5()
+        elif selection == '0':  # Back to main menu
+            main_menu()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email()
+
+
+def email1():  # Email main menu option 1 submenu
+    while True:
+        print('\n')
+        print('User Signature Management Menu:')
+        print('\n')
+        print('1)\tSet User Signature From Text File')
+        print('2)\tSet User Signature From HTML File')
+        print('3)\tSet User Signature Manually')
+        print("4)\tView a User's Signature")
+        print("5)\tSet a User's Vacation Responder")
+        print("6)\tTurn off a User's Vacation Responder")
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # Set sig from txt file
+            usr = input('Please enter a username:  ')
+            txt = input('Please enter the full path to the text file to read: ')
+            cmd = '~/bin/gam/gam user ' + usr + ' signature file ' + txt
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '2':  # Set sig from html file
+            usr = input('Please enter a username:  ')
+            html = input('Please enter the full path to the html file to read: ')
+            cmd = '~/bin/gam/gam user ' + usr + ' signature file ' + html + ' html'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '3':  # Set sig manually
+            usr = input('Please enter a username:  ')
+            print('Line breaks must be designated by <br>. EX: Acme Inc<br>123 Main Ave<br>http://www.acme.com')
+            time.sleep(1)
+            txt = input('Please enter the full text of the signature: ')
+            cmd = '~/bin/gam/gam user ' + usr + ' signature "' + txt + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '4':  # View user's signature
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show signature'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '5':  # Set vacation responder
+            usr = input('Please enter a username:  ')
+            sub = input('Please enter a message subject:  ')
+            print('Line breaks must be designated using the "\ n" (no space).')
+            mes = input('Please enter the vacation message:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' vacation on subject "' + sub + '" message "' + mes + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '6':  # Turn off responder
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' vacation off'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '0':  # Back to main menu
+            email()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email1()
+
+
+def email2():  # Email main menu option 2 menu
+    while True:
+        print('\n')
+        print('Labels and Filters Menu:')
+        print('\n')
+        print('1)\tCreate a Label')
+        print("2)\tView User's Labels")
+        print('3)\tDelete a Label')
+        print('4)\tCreate a Filter')
+        print("5)\tView a User's Filters")
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # Create a label
+            usr = input('Please enter a username:  ')
+            lab = input('Please enter a name for the label:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' label "' + lab + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '2':  # View labels
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show labels'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '3':  # Delete Label
+            usr = input('Please enter a username:  ')
+            lab = input('Please enter the label name:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' delete label "' + lab + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '4':  # Create Filter
+            email2_4()
+        elif selection == '5':  # View user's filters
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show filters'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email1()
+        elif selection == '0':  # Back to main menu
+            email()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email2()
+
+
+def email2_4():  # create filter menu
+    while True:
+        print('\n')
+        print('Filter Criteria:')
+        print('\n')
+        print('1)\t"FROM" Address Only')
+        print('2)\t"FROM" Address and Subject')
+        print('3)\tSubject Only')
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # Filter by from address only
+            usr = input('Please enter a username:  ')
+            eml = input('Please enter an email address to filter on:  ')
+            print('Separate action using a space')
+            act = input('What action to take? [markread | archive | star | trash | neverspam]  ')
+            lab = input('Please enter a label for the filtered messages:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' filter from ' + eml + ' label "' + lab + '" ' + act
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email2_4()
+        elif selection == '2':  # Filter by address and subject
+            usr = input('Please enter a username:  ')
+            eml = input('Please enter an email address to filter on:  ')
+            sub = input('Please enter a subject to filter on:  ')
+            print('Separate action using a space')
+            act = input('What action to take? [markread | archive | star | trash | neverspam]  ')
+            lab = input('Please enter a label for the filtered messages:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' filter from ' + eml + ' subject "' + sub + '" label "'\
+                  + lab + '" ' + act
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email2_4()
+        elif selection == '3':  # Filter by subject
+            usr = input('Please enter a username:  ')
+            sub = input('Please enter a subject to filter on:  ')
+            print('Separate action using a space')
+            act = input('What action to take? [markread | archive | star | trash | neverspam]  ')
+            lab = input('Please enter a label for the filtered messages:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' filter subject ' + sub + ' label "' + lab + '" ' + act
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email2_4()
+        elif selection == '0':  # Back to main menu
+            email2()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email2_4()
+
+
+def email3():  # Pop and imap settings
+    while True:
+        print('\n')
+        print('IMAP and POP Settings:')
+        print('\n')
+        print('1)\tTurn IMAP/POP On or Off for a User')
+        print('2)\tShow IMAP/POP status for a User')
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # IMAP/POP on/off
+            usr = input('Please enter a username:  ')
+            prot = input('What protocol? [pop | imap]  ')
+            act = input('Turn ON or OFF? [on | off]  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' ' + prot + ' ' + act
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email3()
+        elif selection == '2':  # IMAP/POP status
+            usr = input('Please enter a username:  ')
+            prot = input('What protocol? [pop | imap]  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show ' + prot
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email3()
+        elif selection == '0':  # Back to main menu
+            email()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email3()
+
+
+def email4():  # Send As settings
+    while True:
+        print('\n')
+        print('Send As Settings Menu:')
+        print('\n')
+        print('1)\tAdd Send As Address')
+        print('2)\tUpdate Send As Address')
+        print('3)\tDelete Send As Address')
+        print('4)\tShow Send As Addresses for a User')
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # Add send as address
+            usr = input('Please enter a username:  ')
+            eml = input('Please enter an email address to send as:  ')
+            nm = input('Please Enter a name for the email address (ex. John Smith):  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' sendas ' + eml + ' ' + nm + ' replyto ' + eml + \
+                  ' treatasalias true'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email4()
+        elif selection == '2':  # Update send as
+            usr = input('Please enter a username:  ')
+            eml = input('Please enter the send as email address:  ')
+            nm = input('Please Enter an updated name for the email address (ex. John Smith):  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' update sendas ' + eml + ' name ' + nm + ' replyto ' + eml + \
+                  ' treatasalias true'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email4()
+        elif selection == '3':  # delete send as
+            usr = input('Please enter a username:  ')
+            eml = input('Please enter the send as email address:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' delete sendas ' + eml
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email4()
+        elif selection == '4':  # View send as
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show sendas'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email4()
+        elif selection == '0':  # Back to main menu
+            email()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email4()
+
+
+def email5():  # Profile Settings
+    while True:
+        print('\n')
+        print('Profile Settings Menu:')
+        print('\n')
+        print('1)\tAdd/Update User Profile Photo')
+        print("2)\tDownload User's Profile Photo")
+        print("3)\tDelete User's Profile Photo")
+        print("4)\tShow User's Gmail Profile")
+        print("5)\tShow User's Google+ Profile")
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  # Update profile photo
+            usr = input('Please enter a username:  ')
+            print('Photos must be jpg format, and the file path and name are case sensitive.')
+            fn = input('Please enter the full path to the photo you wish to upload:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' update photo ' + fn
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email5()
+        elif selection == '2':  # Download profile photo
+            usr = input('Please enter a username:  ')
+            fn = input('Please enter the full path to folder to save the photo:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' get photo targetfolder ' + fn
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email5()
+        elif selection == '3':  # Delete profile photo
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' delete photo'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email5()
+        elif selection == '4':  # Show Gmail profile
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show gmailprofile'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email5()
+        elif selection == '4':  # Show Google+ profile
+            usr = input('Please enter a username:  ')
+            cmd = '~/bin/gam/gam user ' + usr + ' show gplusprofile'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input("Press ENTER to Continue...")
+            email5()
+        elif selection == '0':  # Back to main menu
+            email()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            email5()
 
 
 cred()
