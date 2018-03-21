@@ -81,10 +81,7 @@ def main_menu():  # Main Menu
         elif selection1 == '7':
             email()
         elif selection1 == '8':
-            print('COMING SOON!!')
-            print('\n')
-            time.sleep(2)
-            input("Press ENTER to Continue...")
+            bulk()
         else:
             print("Unknown Option Selected!")
             print('\n')
@@ -1381,6 +1378,24 @@ def email5():  # Profile Settings
             time.sleep(2)
             input("Press ENTER to Continue...")
             email5()
+
+
+def bulk():  # Bulk operations main menu
+    while True:
+        print('\n')
+        print('Bulk Operations Menu:')
+        print('\n')
+        print('1)\t ')
+        print('2)\t ')
+        print('3)\t ')
+        print('4)\t ')
+        print('5)\t ')
+        print('0)\tBack')
+        print('\n')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '1':  #
 
 
 cred()
