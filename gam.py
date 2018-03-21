@@ -1385,17 +1385,26 @@ def bulk():  # Bulk operations main menu
         print('\n')
         print('Bulk Operations Menu:')
         print('\n')
-        print('1)\t ')
-        print('2)\t ')
-        print('3)\t ')
-        print('4)\t ')
-        print('5)\t ')
+        print('WARNING: Using these will affect multiple users. Some actions are unrecoverable. PROCEED WITH CAUTION!')
+        print('\n\n')
+        print('1)\tGAM Using "ALL USERS" or OU')
+        print('2)\tGAM Batch Mode Using CSV Files')
+        print('3)\tGAM Batch Mode Using Text Files')
         print('0)\tBack')
         print('\n')
 
         selection = input("Please Choose an Option: ")
 
-        if selection == '1':  #
+        if selection == '1':  # Traditional commands
+            trad()
+
+
+def trad():  # Traditional commands
+    while True:
+        print('\n')
+        print('ALL USERS/OU Operations Menu:')
+        print('\n')
+        print('1)\t')
 
 
 cred()
