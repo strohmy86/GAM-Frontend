@@ -1421,9 +1421,14 @@ def trad():  # Traditional commands
 
         selection = input("Please Choose an Option: ")
 
-        if selection == '0':  # Return to the previous menu
+        if selection == '1':  #
+            print('\nCOMING SOON!\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
             bulk()
-        else:  # Invalid selection. returns to current menu.
+        elif selection == '0':  # Return to the previous menu
+            bulk()
+        else:  # Invalid selection. Returns to current menu.
             print("Unknown Option Selected!")
             print('\n')
             time.sleep(2)
