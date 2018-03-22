@@ -48,7 +48,8 @@ class Color:
 def cred():
 
     print('\n')
-    print(Color.DARKCYAN + "*********************************")
+    print(Color.DARKCYAN)
+    print("*********************************")
     print("*     Python 3 Frontend for     *")
     print("*         GAM by Jay Lee        *")
     print("*                               *")
@@ -57,7 +58,8 @@ def cred():
     print("*     strohm.luke@gmail.com     *")
     print("*  https://github.com/strohmy86 *")
     print("*                               *")
-    print("*********************************" + Color.END)
+    print("*********************************")
+    print(Color.END)
 
 
 def main_menu():  # Main Menu
@@ -116,7 +118,7 @@ def users():  # User Management Main Menu
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # User Info menu item
-            username = input("Please enter a username: ")
+            username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = "~/bin/gam/gam info user " + username
             os.system(cmd)
             print('\n')
@@ -132,7 +134,7 @@ def users():  # User Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             users()
         elif selection == '3':  # Activate suspended user menu item
-            username = input("Please enter a username: ")
+            username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = "~/bin/gam/gam update user " + username + " suspended off"
             cmd2 = "~/bin/gam/gam info user " + username
             os.system(cmd)
@@ -143,7 +145,7 @@ def users():  # User Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             users()
         elif selection == '4':  # Suspend a user menu item
-            username = input("Please enter a username: ")
+            username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = "~/bin/gam/gam update user " + username + " suspended on"
             os.system(cmd)
             print('\n')
@@ -176,7 +178,7 @@ def calendar():  # Calendar Management Main Menu
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # Calendar permissions menu item
-            cal = input('Please enter a Google Calendar email address: ')
+            cal = input(Color.BOLD + 'Please enter a Google Calendar email address:' + Color.END)
             cmd = '~/bin/gam/gam calendar ' + cal + ' showacl'
             os.system(cmd)
             print('\n')
@@ -184,11 +186,11 @@ def calendar():  # Calendar Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             calendar()
         elif selection == '2':  # Change permissions menu item
-            cal = input('Please enter a Google Calendar email address: ')
-            ar = input('What would you like to do? [add | remove] ')
-            user = input('User to add to/remove from the Calendar: ')
+            cal = input(Color.BOLD + 'Please enter a Google Calendar email address:' + Color.END)
+            ar = input(Color.BOLD + 'What would you like to do? [add | remove]' + Color.END)
+            user = input(Color.BOLD + 'User to add to/remove from the Calendar:' + Color.END)
             if ar == 'add' or ar == 'Add' or ar == 'a':
-                act = input('What permission would you like to grant? [read | edit | owner] ')
+                act = input(Color.BOLD + 'What permission would you like to grant? [read | edit | owner]' + Color.END)
                 if act == 'read' or act == 'r' or act == 'Read':
                     cmd = '~/bin/gam/gam calendar ' + cal + ' add read ' + user
                     os.system(cmd)
@@ -230,9 +232,9 @@ def calendar():  # Calendar Management Main Menu
                 input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
                 calendar()
         elif selection == '3':  # Delete event menu item
-            cal = input('Please enter a Google Calendar email address: ')
-            ev = input('Enter the event ID: ')
-            yn = input('Are you sure? THIS CANNOT BE UNDONE!! [y/N] ')
+            cal = input(Color.BOLD + 'Please enter a Google Calendar email address:' + Color.END)
+            ev = input(Color.BOLD + 'Enter the event ID:' + Color.END)
+            yn = input(Color.BOLD + 'Are you sure? THIS CANNOT BE UNDONE!! [y/N]' + Color.END)
             if yn == '' or yn == 'N' or yn == 'n' or yn == 'no' or yn == 'No':
                 calendar()
             elif yn == 'y' or yn == 'Y' or yn == 'yes' or yn == 'Yes':
@@ -243,7 +245,7 @@ def calendar():  # Calendar Management Main Menu
                 input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
                 calendar()
         elif selection == '4':  # List calendars menu item
-            user = input('Please enter a username: ')
+            user = input(Color.BOLD + 'Please enter a username:' + Color.END)
             cmd = '~/bin/gam/gam user ' + user + ' show calendars'
             os.system(cmd)
             print('\n')
@@ -251,8 +253,8 @@ def calendar():  # Calendar Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             calendar()
         elif selection == '5':  # Delete calendar menu item
-            user = input('Please enter a username: ')
-            cal = input('Please enter a Google Calendar email address: ')
+            user = input(Color.BOLD + 'Please enter a username:' + Color.END)
+            cal = input(Color.BOLD + 'Please enter a Google Calendar email address:' + Color.END)
             cmd = '~/bin/gam/gam user ' + user + ' delete calendar ' + cal
             os.system(cmd)
             print('\n')
@@ -260,8 +262,8 @@ def calendar():  # Calendar Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             calendar()
         elif selection == '6':  # Add calendar to user menu item
-            user = input('Please enter a username: ')
-            cal = input('Please enter a Google Calendar email address: ')
+            user = input(Color.BOLD + 'Please enter a username:' + Color.END)
+            cal = input(Color.BOLD + 'Please enter a Google Calendar email address:' + Color.END)
             cmd = '~/bin/gam/gam user ' + user + ' add calendar ' + cal + ' selected true hidden false'
             os.system(cmd)
             print('\n')
@@ -293,7 +295,7 @@ def drive():  # Drive Management Main Menu
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # Export file list menu item
-            username = input("Please enter a username: ")
+            username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = "~/bin/gam/gam user " + username + " show filelist allfields > " + username + "-filelist.csv"
             os.system(cmd)
             print('\n')
@@ -303,8 +305,9 @@ def drive():  # Drive Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             drive()
         elif selection == '2':  # Upload file menu item
-            username = input("Please enter a username: ")
-            filename = input("Please enter the full path to the file you wish to upload (Case Sensitive): ")
+            username = input(Color.BOLD + "Please enter a username: " + Color.END)
+            filename = input(Color.BOLD + "Please enter the full path to the file you wish to upload "
+                                          "(Case Sensitive): " + Color.END)
             cmd = "~/bin/gam/gam user " + username + " add drivefile localfile " + filename
             os.system(cmd)
             print('\n')
@@ -314,7 +317,7 @@ def drive():  # Drive Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             drive()
         elif selection == '3':  # View Team Drives menu item
-            username = input("Please enter a username: ")
+            username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = '~/bin/gam/gam user ' + username + ' show teamdrives'
             os.system(cmd)
             time.sleep(2)
@@ -322,8 +325,8 @@ def drive():  # Drive Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             drive()
         elif selection == '4':  # Create team drive for user menu item
-            user = input("Please enter a username: ")
-            name = input('What is the name of the Team Drive? ')
+            user = input(Color.BOLD + "Please enter a username: " + Color.END)
+            name = input(Color.BOLD + 'What is the name of the Team Drive?' + Color.END)
             cmd = '~/bin/gam/gam user ' + user + ' add teamdrive ' + name
             os.system(cmd)
             time.sleep(2)
@@ -331,8 +334,8 @@ def drive():  # Drive Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             drive()
         elif selection == '5':  # Delete user's Team Drive menu item
-            user = input("Please enter a username: ")
-            dr_id = input('What is the Team Drive ID? (Not the name) ')
+            user = input(Color.BOLD + "Please enter a username: " + Color.END)
+            dr_id = input(Color.BOLD + 'What is the Team Drive ID? (Not the name)' + Color.END)
             cmd = '~/bin/gam/gam user ' + user + ' delete teamdrive ' + dr_id
             os.system(cmd)
             time.sleep(2)
@@ -366,7 +369,7 @@ def groups():  # Groups Management Main Menu
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # Create group menu item
-            name = input('What is the name of the group to be created? ')
+            name = input(Color.BOLD + 'What is the name of the group to be created?' + Color.END)
             cmd = '~/bin/gam/gam create group ' + name + '@madisonrams.net'  # PLEASE CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
@@ -374,8 +377,8 @@ def groups():  # Groups Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             groups()
         elif selection == '2':  # Rename group menu item
-            name = input('What is the email address of the group to be renamed? ')
-            ren = input('What is the new name(email address) of the group? ')
+            name = input(Color.BOLD + 'What is the email address of the group to be renamed?' + Color.END)
+            ren = input(Color.BOLD + 'What is the new name(email address) of the group?' + Color.END)
             cmd = '~/bin/gam/gam update group ' + name + ' email ' + ren
             os.system(cmd)
             time.sleep(2)
@@ -383,9 +386,9 @@ def groups():  # Groups Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             groups()
         elif selection == '3':  # Add/Remove group member menu item
-            name = input('What is the email address of the group?')
-            ar = input('Add or Remove user? [add | remove] ')
-            user = input('What user? ')
+            name = input(Color.BOLD + 'What is the email address of the group?')
+            ar = input(Color.BOLD + 'Add or Remove user? [add | remove]' + Color.END)
+            user = input(Color.BOLD + 'What user?' + Color.END)
             if ar == 'add' or ar == 'a' or ar == 'Add' or ar == 'A':
                 cmd = '~/bin/gam/gam update group ' + name + ' add member user ' + user
                 os.system(cmd)
@@ -407,9 +410,10 @@ def groups():  # Groups Management Main Menu
                 input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
                 groups()
         elif selection == '4':  # Update user role menu item
-            name = input('What is the email address of the group?')
-            user = input("What user's role will be modified? ")
-            perm = input('New role to assign (Must be in Lower Case): [owner | member | manager] ')
+            name = input(Color.BOLD + 'What is the email address of the group?')
+            user = input(Color.BOLD + "What user's role will be modified? " + Color.END)
+            perm = input(Color.BOLD + 'New role to assign (Must be in Lower Case): [owner | member | manager]'
+                         + Color.END)
             cmd = '~/bin/gam/gam update group ' + name + ' update ' + perm + ' user ' + user
             os.system(cmd)
             time.sleep(2)
@@ -417,7 +421,7 @@ def groups():  # Groups Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             groups()
         elif selection == '5':  # Group information menu item
-            name = input('What is the email address of the group?')
+            name = input(Color.BOLD + 'What is the email address of the group?')
             cmd = '~/bin/gam/gam info group ' + name
             os.system(cmd)
             time.sleep(2)
@@ -425,7 +429,7 @@ def groups():  # Groups Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             groups()
         elif selection == '6':  # Delete group menu item
-            name = input('What is the email address of the group?')
+            name = input(Color.BOLD + 'What is the email address of the group?')
             cmd = '~/bin/gam/gam delete group ' + name
             os.system(cmd)
             time.sleep(2)
@@ -458,10 +462,11 @@ def classroom():  # Classroom Management Main Menu
         if selection == '1':  # Manage courses menu item. Calls classroom1() function.
             classroom1()
         elif selection == '2':  # Manage course participants menu item
-            al = input('What is the course ID or alias? ')
-            act = input('Do you want to Add or Remove? (Must be lower case) [add | remove] ')
-            who = input('Is the person a student or a teacher? (Must be lower case) [student | teacher] ')
-            user = input("What is the person's username? ")
+            al = input(Color.BOLD + 'What is the course ID or alias?' + Color.END)
+            act = input(Color.BOLD + 'Do you want to Add or Remove? (Must be lower case) [add | remove]' + Color.END)
+            who = input(Color.BOLD + 'Is the person a student or a teacher? (Must be lower case) [student | teacher]'
+                        + Color.END)
+            user = input(Color.BOLD + "What is the person's username? " + Color.END)
             cmd = '~/bin/gam/gam course ' + al + ' ' + act + ' ' + who + ' ' + user + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -494,9 +499,9 @@ def devices():  # Device Management Main Menu
         print('0)   Back')
         print('\n')
 
-        selection = input('Please Choose an Option: ')
+        selection = input(Color.BOLD + 'Please Choose an Option: ' + Color.END)
         if selection == '1':  # Get ID menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '"'
             os.system(cmd)
             time.sleep(2)
@@ -504,7 +509,7 @@ def devices():  # Device Management Main Menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             devices()
         elif selection == '2':  # Update info menu item
-            cr_id = input('Please enter the Chrome Device Serial Number: ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number:' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             time.sleep(1)
@@ -512,9 +517,9 @@ def devices():  # Device Management Main Menu
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            act = input('What do you want to update?  [location | asset id] ')
+            act = input(Color.BOLD + 'What do you want to update?  [location | asset id]' + Color.END)
             if act == 'location' or act == 'Location' or act == 'loc' or act == 'Loc' or act == 'L' or act == 'l':
-                loc = input('Enter new location: ')
+                loc = input(Color.BOLD + 'Enter new location:' + Color.END)
                 cmd2 = '~/bin/gam/gam update cros ' + id2 + ' location "' + loc + '"'
                 os.system(cmd2)
                 time.sleep(2)
@@ -525,7 +530,7 @@ def devices():  # Device Management Main Menu
                 devices()
             elif act == 'asset' or act == 'asset id' or act == 'assetid' or act == 'Asset' or act == 'Asset Id' or \
                     act == 'Asset ID' or act == 'Asset id' or act == 'A' or act == 'a':
-                asset = input('Enter new Asset ID: ')
+                asset = input(Color.BOLD + 'Enter new Asset ID:' + Color.END)
                 cmd2 = '~/bin/gam/gam update cros ' + id2 + ' assetid "' + asset + '"'
                 os.system(cmd2)
                 time.sleep(2)
@@ -569,12 +574,12 @@ def classroom1():
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # Create course menu item
-            al = input('What is the course alias? (All lower lase, no spaces)')
-            name = input('What is the course name? ')
-            sec = input('What is the course section? (Numbers only)')
-            head = input('What is the heading? ')
-            room = input('What room is the class in? (No spaces')
-            teach = input("What is the teacher's username? ")
+            al = input(Color.BOLD + 'What is the course alias? (All lower lase, no spaces)')
+            name = input(Color.BOLD + 'What is the course name?' + Color.END)
+            sec = input(Color.BOLD + 'What is the course section? (Numbers only)')
+            head = input(Color.BOLD + 'What is the heading?' + Color.END)
+            room = input(Color.BOLD + 'What room is the class in? (No spaces')
+            teach = input(Color.BOLD + "What is the teacher's username? " + Color.END)
             cmd = '~/bin/gam/gam create course alias ' + al + ' name "' + name + '" section ' + sec + ' heading "' \
                   + head + '" room ' + room + ' teacher ' + teach + ' status ACTIVE'
             os.system(cmd)
@@ -585,7 +590,7 @@ def classroom1():
         elif selection == '2':  # Update course menu item. Calls classroom1_2() function
             classroom1_2()
         elif selection == '3':  # Course info menu item
-            al = input('What is the course ID or alias? ')
+            al = input(Color.BOLD + 'What is the course ID or alias?' + Color.END)
             cmd = '~/bin/gam/gam info course ' + al
             os.system(cmd)
             time.sleep(2)
@@ -593,8 +598,8 @@ def classroom1():
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom()
         elif selection == '4':  # Delete course menu item
-            al = input('What is the course ID or alias? ')
-            yn = input('Are you sure? This action cannot be undone! [y/N] ')
+            al = input(Color.BOLD + 'What is the course ID or alias?' + Color.END)
+            yn = input(Color.BOLD + 'Are you sure? This action cannot be undone! [y/N]' + Color.END)
             if yn == 'y' or yn == 'yes' or yn == 'Y' or yn == 'Yes':
                 cmd = '~/bin/gam/gam delete course ' + al
                 os.system(cmd)
@@ -619,7 +624,7 @@ def classroom1():
 
 
 def classroom1_2():  # Classroom main menu option 1, submenu 2
-    al = input('What is the course ID or alias that will be updated? ')
+    al = input(Color.BOLD + 'What is the course ID or alias that will be updated?' + Color.END)
     while True:
         print('\n')
         print(Color.YELLOW + 'Update What?' + Color.END)
@@ -635,7 +640,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # Update name menu item
-            name = input('Enter the new name: ')
+            name = input(Color.BOLD + 'Enter the new name:' + Color.END)
             cmd = '~/bin/gam/gam update course ' + al + ' name ' + name
             os.system(cmd)
             time.sleep(2)
@@ -643,7 +648,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom1()
         elif selection == '2':  # Update section menu item
-            name = input('Enter new section: ')
+            name = input(Color.BOLD + 'Enter new section:' + Color.END)
             cmd = '~/bin/gam/gam update course ' + al + ' section ' + name
             os.system(cmd)
             time.sleep(2)
@@ -651,7 +656,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom1()
         elif selection == '3':  # Update heading menu item
-            name = input('Enter new heading: ')
+            name = input(Color.BOLD + 'Enter new heading:' + Color.END)
             cmd = '~/bin/gam/gam update course ' + al + ' heading "' + name + '"'
             os.system(cmd)
             time.sleep(2)
@@ -659,7 +664,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom1()
         elif selection == '4':  # Update room menu item
-            name = input('Enter new room: ')
+            name = input(Color.BOLD + 'Enter new room:' + Color.END)
             cmd = '~/bin/gam/gam update course ' + al + ' room ' + name
             os.system(cmd)
             time.sleep(2)
@@ -667,7 +672,8 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom1()
         elif selection == '5':  # Update status menu item
-            name = input('Enter new status (Must be uppercase): [ACTIVE | ARCHIVED | DECLINED] ')
+            name = input(Color.BOLD + 'Enter new status (Must be uppercase): [ACTIVE | ARCHIVED | DECLINED]'
+                         + Color.END)
             cmd = '~/bin/gam/gam update course ' + al + ' status ' + name
             os.system(cmd)
             time.sleep(2)
@@ -675,7 +681,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom1()
         elif selection == '6':  # Update teacher menu item
-            name = input('Enter new teacher username: ')
+            name = input(Color.BOLD + 'Enter new teacher username:' + Color.END)
             cmd = '~/bin/gam/gam update course ' + al + ' owner ' + name
             os.system(cmd)
             time.sleep(2)
@@ -705,8 +711,8 @@ def classroom3():  # Classroom main menu option 3 submenu
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # Invite guardian menu item
-            stu = input("What is the student's username? ")
-            guard = input("What is the guardian's email address? ")
+            stu = input(Color.BOLD + "What is the student's username? " + Color.END)
+            guard = input(Color.BOLD + "What is the guardian's email address? " + Color.END)
             cmd = '~/bin/gam/gam create guardianinvite ' + guard + ' ' + stu + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -714,8 +720,8 @@ def classroom3():  # Classroom main menu option 3 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom3()
         elif selection == '2':  # Delete guardian menu item
-            stu = input("What is the student's username? ")
-            guard = input("What is the guardian's email address? ")
+            stu = input(Color.BOLD + "What is the student's username? " + Color.END)
+            guard = input(Color.BOLD + "What is the guardian's email address? " + Color.END)
             cmd = '~/bin/gam/gam delete guardian ' + guard + ' ' + stu + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -723,7 +729,7 @@ def classroom3():  # Classroom main menu option 3 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom3()
         elif selection == '3':  # View a student's guardian(s) menu item
-            stu = input("What is the student's username? ")
+            stu = input(Color.BOLD + "What is the student's username? " + Color.END)
             cmd = '~/bin/gam/gam print guardians student ' + stu + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -753,7 +759,7 @@ def classroom4():  # Classroom main menu option 4 submenu
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
         if selection == '1':  # View teacher's courses menu item
-            user = input("What is the teacher's username? ")
+            user = input(Color.BOLD + "What is the teacher's username? " + Color.END)
             cmd = '~/bin/gam/gam print courses teacher ' + user + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -761,7 +767,7 @@ def classroom4():  # Classroom main menu option 4 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom4()
         elif selection == '2':  # View student's courses menu item
-            user = input("What is the student's username? ")
+            user = input(Color.BOLD + "What is the student's username? " + Color.END)
             cmd = '~/bin/gam/gam print courses student ' + user + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -769,8 +775,8 @@ def classroom4():  # Classroom main menu option 4 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             classroom4()
         elif selection == '3':  # View course participants menu item
-            al = input('What is the course ID or alias? ')
-            file = input('Output to a CSV file? [Y/n]')
+            al = input(Color.BOLD + 'What is the course ID or alias?' + Color.END)
+            file = input(Color.BOLD + 'Output to a CSV file? [Y/n]')
             if file == '' or file == 'y' or file == 'Y' or file == 'yes' or file == 'Yes':
                 cmd = '~/bin/gam/gam print course-participants course ' + al + ' > ' + al + '-participants.csv'
                 os.system(cmd)
@@ -812,9 +818,9 @@ def devices3():  # Devices main menu option 3 submenu
         print('0)   Back')
         print('\n')
 
-        selection = input('Please Choose an Option: ')
+        selection = input(Color.BOLD + 'Please Choose an Option: ' + Color.END)
         if selection == '1':  # View device info menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             os.system(cmd)
@@ -830,7 +836,8 @@ def devices3():  # Devices main menu option 3 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             devices3()
         elif selection == '2':  # Export devices in ou menu item
-            ou = input('Please enter the full path of the OU you wish to export (Case Sensitive): ')
+            ou = input(Color.BOLD + 'Please enter the full path of the OU you wish to export (Case Sensitive):'
+                       + Color.END)
             ou2 = ou.split("/")[-1]
             cmd = '~/bin/gam/gam print cros full limit_to_ou "' + ou + '" > "' + ou2 + '"-export.csv'
             os.system(cmd)
@@ -870,9 +877,9 @@ def devices4():  # Devices main menu option 4 submenu
         print('0)   Back')
         print('\n')
 
-        selection = input('Please Choose an Option: ')
+        selection = input(Color.BOLD + 'Please Choose an Option: ' + Color.END)
         if selection == '1':  # Disable menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             os.system(cmd)
@@ -888,7 +895,7 @@ def devices4():  # Devices main menu option 4 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             devices4()
         elif selection == '2':  # Re-enable menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             os.system(cmd)
@@ -926,9 +933,9 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
         print('0)   Back')
         print('\n')
 
-        selection = input('Please Choose an Option: ')
+        selection = input(Color.BOLD + 'Please Choose an Option: ' + Color.END)
         if selection == '1':  # Replace with same model menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             os.system(cmd)
@@ -945,7 +952,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             devices4_3()
         elif selection == '2':  # Replace with diff model menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             os.system(cmd)
@@ -961,7 +968,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             devices4_3()
         elif selection == '3':  # Retire menu item
-            cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
+            cr_id = input(Color.BOLD + 'Please enter the Chrome Device Serial Number (Case sensitive):' + Color.END)
             cmd = '~/bin/gam/gam print cros query "id:' + cr_id + '" > id.txt'
             print('Looking up the device ID...')
             os.system(cmd)
@@ -1039,8 +1046,8 @@ def email1():  # Email main menu option 1 submenu
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # Set sig from txt file
-            usr = input('Please enter a username:  ')
-            txt = input('Please enter the full path to the text file to read: ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            txt = input(Color.BOLD + 'Please enter the full path to the text file to read:' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' signature file ' + txt
             os.system(cmd)
             time.sleep(2)
@@ -1048,8 +1055,8 @@ def email1():  # Email main menu option 1 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '2':  # Set sig from html file
-            usr = input('Please enter a username:  ')
-            html = input('Please enter the full path to the html file to read: ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            html = input(Color.BOLD + 'Please enter the full path to the html file to read:' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' signature file ' + html + ' html'
             os.system(cmd)
             time.sleep(2)
@@ -1057,10 +1064,10 @@ def email1():  # Email main menu option 1 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '3':  # Set sig manually
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             print('Line breaks must be designated by <br>. EX: Acme Inc<br>123 Main Ave<br>http://www.acme.com')
             time.sleep(1)
-            txt = input('Please enter the full text of the signature: ')
+            txt = input(Color.BOLD + 'Please enter the full text of the signature:' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' signature "' + txt + '"'
             os.system(cmd)
             time.sleep(2)
@@ -1068,7 +1075,7 @@ def email1():  # Email main menu option 1 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '4':  # View user's signature
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show signature'
             os.system(cmd)
             time.sleep(2)
@@ -1076,10 +1083,10 @@ def email1():  # Email main menu option 1 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '5':  # Set vacation responder
-            usr = input('Please enter a username:  ')
-            sub = input('Please enter a message subject:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            sub = input(Color.BOLD + 'Please enter a message subject: ' + Color.END)
             print('Line breaks must be designated using the "\ n" (no space).')
-            mes = input('Please enter the vacation message:  ')
+            mes = input(Color.BOLD + 'Please enter the vacation message: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' vacation on subject "' + sub + '" message "' + mes + '"'
             os.system(cmd)
             time.sleep(2)
@@ -1087,7 +1094,7 @@ def email1():  # Email main menu option 1 submenu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '6':  # Turn off responder
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' vacation off'
             os.system(cmd)
             time.sleep(2)
@@ -1120,8 +1127,8 @@ def email2():  # Email main menu option 2 menu
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # Create a label
-            usr = input('Please enter a username:  ')
-            lab = input('Please enter a name for the label:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            lab = input(Color.BOLD + 'Please enter a name for the label: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' label "' + lab + '"'
             os.system(cmd)
             time.sleep(2)
@@ -1129,7 +1136,7 @@ def email2():  # Email main menu option 2 menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '2':  # View labels
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show labels'
             os.system(cmd)
             time.sleep(2)
@@ -1137,8 +1144,8 @@ def email2():  # Email main menu option 2 menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email1()
         elif selection == '3':  # Delete Label
-            usr = input('Please enter a username:  ')
-            lab = input('Please enter the label name:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            lab = input(Color.BOLD + 'Please enter the label name: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' delete label "' + lab + '"'
             os.system(cmd)
             time.sleep(2)
@@ -1148,7 +1155,7 @@ def email2():  # Email main menu option 2 menu
         elif selection == '4':  # Create Filter
             email2_4()
         elif selection == '5':  # View user's filters
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show filters'
             os.system(cmd)
             time.sleep(2)
@@ -1179,11 +1186,12 @@ def email2_4():  # create filter menu
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # Filter by from address only
-            usr = input('Please enter a username:  ')
-            eml = input('Please enter an email address to filter on:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
             print('Separate action using a space')
-            act = input('What action to take? [markread | archive | star | trash | neverspam]  ')
-            lab = input('Please enter a label for the filtered messages:  ')
+            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
+                        + Color.END)
+            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' filter from ' + eml + ' label "' + lab + '" ' + act
             os.system(cmd)
             time.sleep(2)
@@ -1191,12 +1199,13 @@ def email2_4():  # create filter menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email2_4()
         elif selection == '2':  # Filter by address and subject
-            usr = input('Please enter a username:  ')
-            eml = input('Please enter an email address to filter on:  ')
-            sub = input('Please enter a subject to filter on:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
+            sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
             print('Separate action using a space')
-            act = input('What action to take? [markread | archive | star | trash | neverspam]  ')
-            lab = input('Please enter a label for the filtered messages:  ')
+            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
+                        + Color.END)
+            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' filter from ' + eml + ' subject "' + sub + '" label "'\
                   + lab + '" ' + act
             os.system(cmd)
@@ -1205,11 +1214,12 @@ def email2_4():  # create filter menu
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email2_4()
         elif selection == '3':  # Filter by subject
-            usr = input('Please enter a username:  ')
-            sub = input('Please enter a subject to filter on:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
             print('Separate action using a space')
-            act = input('What action to take? [markread | archive | star | trash | neverspam]  ')
-            lab = input('Please enter a label for the filtered messages:  ')
+            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
+                        + Color.END)
+            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' filter subject ' + sub + ' label "' + lab + '" ' + act
             os.system(cmd)
             time.sleep(2)
@@ -1239,9 +1249,9 @@ def email3():  # Pop and imap settings
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # IMAP/POP on/off
-            usr = input('Please enter a username:  ')
-            prot = input('What protocol? [pop | imap]  ')
-            act = input('Turn ON or OFF? [on | off]  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
+            act = input(Color.BOLD + 'Turn ON or OFF? [on | off] ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' ' + prot + ' ' + act
             os.system(cmd)
             time.sleep(2)
@@ -1249,8 +1259,8 @@ def email3():  # Pop and imap settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email3()
         elif selection == '2':  # IMAP/POP status
-            usr = input('Please enter a username:  ')
-            prot = input('What protocol? [pop | imap]  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show ' + prot
             os.system(cmd)
             time.sleep(2)
@@ -1282,9 +1292,9 @@ def email4():  # Send As settings
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # Add send as address
-            usr = input('Please enter a username:  ')
-            eml = input('Please enter an email address to send as:  ')
-            nm = input('Please Enter a name for the email address (ex. John Smith):  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            eml = input(Color.BOLD + 'Please enter an email address to send as: ' + Color.END)
+            nm = input(Color.BOLD + 'Please Enter a name for the email address (ex. John Smith): ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' sendas ' + eml + ' ' + nm + ' replyto ' + eml + \
                   ' treatasalias true'
             os.system(cmd)
@@ -1293,9 +1303,9 @@ def email4():  # Send As settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email4()
         elif selection == '2':  # Update send as
-            usr = input('Please enter a username:  ')
-            eml = input('Please enter the send as email address:  ')
-            nm = input('Please Enter an updated name for the email address (ex. John Smith):  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            eml = input(Color.BOLD + 'Please enter the send as email address: ' + Color.END)
+            nm = input(Color.BOLD + 'Please Enter an updated name for the email address (ex. John Smith): ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' update sendas ' + eml + ' name ' + nm + ' replyto ' + eml + \
                   ' treatasalias true'
             os.system(cmd)
@@ -1304,8 +1314,8 @@ def email4():  # Send As settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email4()
         elif selection == '3':  # delete send as
-            usr = input('Please enter a username:  ')
-            eml = input('Please enter the send as email address:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            eml = input(Color.BOLD + 'Please enter the send as email address: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' delete sendas ' + eml
             os.system(cmd)
             time.sleep(2)
@@ -1313,7 +1323,7 @@ def email4():  # Send As settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email4()
         elif selection == '4':  # View send as
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show sendas'
             os.system(cmd)
             time.sleep(2)
@@ -1346,9 +1356,9 @@ def email5():  # Profile Settings
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
 
         if selection == '1':  # Update profile photo
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             print('Photos must be jpg format, and the file path and name are case sensitive.')
-            fn = input('Please enter the full path to the photo you wish to upload:  ')
+            fn = input(Color.BOLD + 'Please enter the full path to the photo you wish to upload: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' update photo ' + fn
             os.system(cmd)
             time.sleep(2)
@@ -1356,8 +1366,8 @@ def email5():  # Profile Settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email5()
         elif selection == '2':  # Download profile photo
-            usr = input('Please enter a username:  ')
-            fn = input('Please enter the full path to folder to save the photo:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            fn = input(Color.BOLD + 'Please enter the full path to folder to save the photo: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' get photo targetfolder ' + fn
             os.system(cmd)
             time.sleep(2)
@@ -1365,7 +1375,7 @@ def email5():  # Profile Settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email5()
         elif selection == '3':  # Delete profile photo
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' delete photo'
             os.system(cmd)
             time.sleep(2)
@@ -1373,7 +1383,7 @@ def email5():  # Profile Settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email5()
         elif selection == '4':  # Show Gmail profile
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show gmailprofile'
             os.system(cmd)
             time.sleep(2)
@@ -1381,7 +1391,7 @@ def email5():  # Profile Settings
             input(Color.GREEN + 'Press ENTER to Continue...' + Color.END)
             email5()
         elif selection == '4':  # Show Google+ profile
-            usr = input('Please enter a username:  ')
+            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = '~/bin/gam/gam user ' + usr + ' show gplusprofile'
             os.system(cmd)
             time.sleep(2)
@@ -1435,7 +1445,7 @@ def trad():  # Traditional commands
         print('\n')
         print('ALL USERS/OU Operations Menu:')
         print('\n')
-        print('1)   ')
+        print('1)   0')
         print('0)   Back')
 
         selection = input(Color.BOLD + 'Please Choose an Option:  ' + Color.END)
@@ -1458,7 +1468,7 @@ def trad():  # Traditional commands
 def batch():  # GAM batch file commands
     print(Color.BOLD + '\nThe file to be used in this batch mode must have a full GAM command, one per line,'
           ' with correct syntax\n' + Color.END)
-    file = input('Please enter the full path of the file to be used:  ')
+    file = input(Color.BOLD + 'Please enter the full path of the file to be used: ' + Color.END)
     cmd = '~/bin/gam/gam batch ' + file
     os.system(cmd)
     time.sleep(2)
