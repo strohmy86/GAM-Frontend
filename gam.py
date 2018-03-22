@@ -1397,6 +1397,18 @@ def bulk():  # Bulk operations main menu
 
         if selection == '1':  # Traditional commands
             trad()
+        elif selection == '2':  # CSV Batch Mode
+            csv()
+        elif selection == '3':  # Text File Batch Mode
+            batch()
+        elif selection == '0':  # Back to main menu
+            main_menu()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            bulk()
 
 
 def trad():  # Traditional commands
@@ -1405,6 +1417,37 @@ def trad():  # Traditional commands
         print('ALL USERS/OU Operations Menu:')
         print('\n')
         print('1)\t')
+        print('0)\tBack')
+
+        selection = input("Please Choose an Option: ")
+
+        if selection == '0':  # Return to the previous menu
+            bulk()
+        else:  # Invalid selection. returns to current menu.
+            print("Unknown Option Selected!")
+            print('\n')
+            time.sleep(2)
+            input("Press ENTER to Continue...")
+            trad()
+
+
+def batch():  # GAM batch file commands
+    print('\nThe file to be used in this batch mode must have a full GAM command, one per line, with correct syntax\n')
+    file = input('Please enter the full path to the file to be used:  ')
+    cmd = '~/bin/gam/gam batch ' + file
+    os.system(cmd)
+    time.sleep(2)
+    print('\n')
+    input("Press ENTER to Continue...")
+    bulk()
+
+
+def csv():  # GAM CSV file batch mode
+    print('COMING SOON!')
+    time.sleep(2)
+    print('\n')
+    input("Press ENTER to Continue...")
+    bulk()
 
 
 cred()
