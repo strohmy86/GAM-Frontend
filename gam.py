@@ -35,35 +35,35 @@ import sys
 def cred():
 
     print('\n')
-    print("*********************************")
-    print("*  GAM basic automation script  *")
-    print("*  Frontend to  GAM by jay0lee  *")
+    print("\033[36m*********************************")
+    print("*     Python 3 Frontend for     *")
+    print("*         GAM by Jay Lee        *")
     print("*                               *")
-    print("*  Written and maintained by:   *")
-    print("*        Luke Strohm            *")
-    print("*    strohm.luke@gmail.com      *")
+    print("*   Written and maintained by   *")
+    print("*          Luke Strohm          *")
+    print("*     strohm.luke@gmail.com     *")
+    print("*  https://github.com/strohmy86 *")
     print("*                               *")
-    print("*********************************")
-    print('\n')
+    print("*********************************\033[0m")
 
 
 def main_menu():  # Main Menu
     while True:
         print('\n')
-        print('Menu:')
+        print('\033[95mMain Menu:\033[0m')
         print('\n')
-        print('1)\tUser Management')
-        print('2)\tCalendar Management')
-        print('3)\tDrive Management')
-        print('4)\tGroup Management')
-        print('5)\tClassroom Management')
-        print('6)\tDevice Management')
-        print('7)\tEmail Management')
-        print('8)\tBulk Operations')
-        print('0)\tExit')
+        print('1)   User Management')
+        print('2)   Calendar Management')
+        print('3)   Drive Management')
+        print('4)   Group Management')
+        print('5)   Classroom Management')
+        print('6)   Device Management')
+        print('7)   Email Management')
+        print('8)   Bulk Operations')
+        print('0)   Exit')
         print('\n')
 
-        selection1 = input('Please Choose an Option: ')
+        selection1 = input('\033[1mPlease Choose an Option:\033[0m  ')
         if selection1 == '0':
             sys.exit()
         elif selection1 == '1':
@@ -83,32 +83,32 @@ def main_menu():  # Main Menu
         elif selection1 == '8':
             bulk()
         else:
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
 
 
 def users():  # User Management Main Menu
     while True:
         print('\n')
-        print('User Management Menu:')
+        print('\033[95mUser Management Menu:\033[0m')
         print('\n')
-        print('1)\tUser Information')
-        print('2)\tExport List of All Users')
-        print('3)\tActivate Suspended User')
-        print('4)\tSuspend User')
-        print('0)\tBack')
+        print('1)   User Information')
+        print('2)   Export List of All Users')
+        print('3)   Activate Suspended User')
+        print('4)   Suspend User')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # User Info menu item
             username = input("Please enter a username: ")
             cmd = "~/bin/gam/gam info user " + username
             os.system(cmd)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             users()
         elif selection == '2':  # Export users menu item
             cmd = "~/bin/gam/gam print users allfields > Userlist.csv"
@@ -116,7 +116,7 @@ def users():  # User Management Main Menu
             print('\n')
             print("Userlist.csv saved.")
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             users()
         elif selection == '3':  # Activate suspended user menu item
             username = input("Please enter a username: ")
@@ -127,7 +127,7 @@ def users():  # User Management Main Menu
             os.system(cmd2)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             users()
         elif selection == '4':  # Suspend a user menu item
             username = input("Please enter a username: ")
@@ -135,40 +135,40 @@ def users():  # User Management Main Menu
             os.system(cmd)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             users()
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid selection. Return to this menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             users()
 
 
 def calendar():  # Calendar Management Main Menu
     while True:
         print('\n')
-        print('Calendar Management Menu:')
+        print('\033[95mCalendar Management Menu:\033[0m')
         print('\n')
-        print('1)\tShow Permissions For a Calendar')
-        print("2)\tAdd or Remove Calendar Permissions")
-        print('3)\tDelete a Calendar Event')
-        print("4)\tList a User's Calendar(s)")
-        print("5)\tDelete a User's Calendar (Cannot delete default calendar)")
-        print("6)\tAdd a Calendar to a User")
-        print('0)\tBack')
+        print('1)   Show Permissions For a Calendar')
+        print("2)   Add or Remove Calendar Permissions")
+        print('3)   Delete a Calendar Event')
+        print("4)   List a User's Calendar(s)")
+        print("5)   Delete a User's Calendar (Cannot delete default calendar)")
+        print("6)   Add a Calendar to a User")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # Calendar permissions menu item
             cal = input('Please enter a Google Calendar email address: ')
             cmd = '~/bin/gam/gam calendar ' + cal + ' showacl'
             os.system(cmd)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             calendar()
         elif selection == '2':  # Change permissions menu item
             cal = input('Please enter a Google Calendar email address: ')
@@ -181,40 +181,40 @@ def calendar():  # Calendar Management Main Menu
                     os.system(cmd)
                     print('\n')
                     time.sleep(2)
-                    input("Press ENTER to Continue...")
+                    input("\033[1mPress ENTER to Continue...\033[0m")
                     calendar()
                 elif act == 'edit' or act == 'editor' or act == 'e' or act == 'Edit':
                     cmd = '~/bin/gam/gam calendar ' + cal + ' add editor ' + user
                     os.system(cmd)
                     print('\n')
                     time.sleep(2)
-                    input("Press ENTER to Continue...")
+                    input("\033[1mPress ENTER to Continue...\033[0m")
                     calendar()
                 elif act == 'owner' or act == 'own' or act == 'o' or act == 'Owner':
                     cmd = '~/bin/gam/gam calendar ' + cal + ' add owner ' + user
                     os.system(cmd)
                     print('\n')
                     time.sleep(2)
-                    input("Press ENTER to Continue...")
+                    input("\033[1mPress ENTER to Continue...\033[0m")
                     calendar()
                 else:
-                    print("Unknown Option Selected!")
+                    print("\033[1m\033[91mInvalid Option Selected!\033[0m")
                     print('\n')
                     time.sleep(2)
-                    input("Press ENTER to Continue...")
+                    input("\033[1mPress ENTER to Continue...\033[0m")
                     calendar()
             elif ar == 'rem' or ar == 'remove' or ar == 'r' or ar == 'Remove' or ar == 'Rem':
                 cmd = '~/bin/gam/gam calendar ' + cal + ' delete user ' + user
                 os.system(cmd)
                 print('\n')
                 time.sleep(2)
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 calendar()
             else:
-                print("Unknown Option Selected!")
+                print("\033[1m\033[91mInvalid Option Selected!\033[0m")
                 print('\n')
                 time.sleep(2)
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 calendar()
         elif selection == '3':  # Delete event menu item
             cal = input('Please enter a Google Calendar email address: ')
@@ -227,7 +227,7 @@ def calendar():  # Calendar Management Main Menu
                 os.system(cmd)
                 print('\n')
                 time.sleep(2)
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 calendar()
         elif selection == '4':  # List calendars menu item
             user = input('Please enter a username: ')
@@ -235,7 +235,7 @@ def calendar():  # Calendar Management Main Menu
             os.system(cmd)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             calendar()
         elif selection == '5':  # Delete calendar menu item
             user = input('Please enter a username: ')
@@ -244,7 +244,7 @@ def calendar():  # Calendar Management Main Menu
             os.system(cmd)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             calendar()
         elif selection == '6':  # Add calendar to user menu item
             user = input('Please enter a username: ')
@@ -253,32 +253,32 @@ def calendar():  # Calendar Management Main Menu
             os.system(cmd)
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             calendar()
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid menu selection error. Returns to current menu
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             calendar()
 
 
 def drive():  # Drive Management Main Menu
     while True:
         print('\n')
-        print('Drive Management Menu:')
+        print('\033[95mDrive Management Menu:\033[0m')
         print('\n')
-        print("1)\tExport a List of a User's Drive Files")
-        print("2)\tUpload a Local File To a User's Drive")
-        print("3)\tView a User's Team Drive(s)")
-        print('4)\tCreate a Team Drive For a User')
-        print("5)\tDelete a User's Team Drive")
-        print('0)\tBack')
+        print("1)   Export a List of a User's Drive Files")
+        print("2)   Upload a Local File To a User's Drive")
+        print("3)   View a User's Team Drive(s)")
+        print('4)   Create a Team Drive For a User')
+        print("5)   Delete a User's Team Drive")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # Export file list menu item
             username = input("Please enter a username: ")
             cmd = "~/bin/gam/gam user " + username + " show filelist allfields > " + username + "-filelist.csv"
@@ -287,7 +287,7 @@ def drive():  # Drive Management Main Menu
             print("File list saved as " + username + "-filelist.csv.")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             drive()
         elif selection == '2':  # Upload file menu item
             username = input("Please enter a username: ")
@@ -298,7 +298,7 @@ def drive():  # Drive Management Main Menu
             print("File uploaded successfully")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             drive()
         elif selection == '3':  # View Team Drives menu item
             username = input("Please enter a username: ")
@@ -306,7 +306,7 @@ def drive():  # Drive Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             drive()
         elif selection == '4':  # Create team drive for user menu item
             user = input("Please enter a username: ")
@@ -315,7 +315,7 @@ def drive():  # Drive Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             drive()
         elif selection == '5':  # Delete user's Team Drive menu item
             user = input("Please enter a username: ")
@@ -324,33 +324,33 @@ def drive():  # Drive Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             drive()
         elif selection == '0':  # Return to main menu
             main_menu()
         else:  # Invalid selection. Returns to this menu
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             drive()
 
 
 def groups():  # Groups Management Main Menu
     while True:
         print('\n')
-        print('Group Management Menu:')
+        print('\033[95mGroup Management Menu:\033[0m')
         print('\n')
-        print('1)\tCreate a Group')
-        print('2)\tRename a Group')
-        print('3)\tAdd or Remove Group Member')
-        print('4)\tUpdate User Role in a Group')
-        print('5)\tGet Group Information')
-        print('6)\tDelete a Group')
-        print('0)\tBack')
+        print('1)   Create a Group')
+        print('2)   Rename a Group')
+        print('3)   Add or Remove Group Member')
+        print('4)   Update User Role in a Group')
+        print('5)   Get Group Information')
+        print('6)   Delete a Group')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Create group menu item
             name = input('What is the name of the group to be created? ')
@@ -358,7 +358,7 @@ def groups():  # Groups Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             groups()
         elif selection == '2':  # Rename group menu item
             name = input('What is the email address of the group to be renamed? ')
@@ -367,7 +367,7 @@ def groups():  # Groups Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             groups()
         elif selection == '3':  # Add/Remove group member menu item
             name = input('What is the email address of the group?')
@@ -378,20 +378,20 @@ def groups():  # Groups Management Main Menu
                 os.system(cmd)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 groups()
             elif ar == 'remove' or ar == 'r' or ar == 'R' or ar == 'Remove' or ar == 'rem' or ar == 'Rem':
                 cmd = '~/bin/gam/gam update group ' + name + ' remove user ' + user
                 os.system(cmd)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 groups()
             else:
-                print("Unknown Option Selected!")
+                print("\033[1m\033[91mInvalid Option Selected!\033[0m")
                 print('\n')
                 time.sleep(2)
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 groups()
         elif selection == '4':  # Update user role menu item
             name = input('What is the email address of the group?')
@@ -401,7 +401,7 @@ def groups():  # Groups Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             groups()
         elif selection == '5':  # Group information menu item
             name = input('What is the email address of the group?')
@@ -409,7 +409,7 @@ def groups():  # Groups Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             groups()
         elif selection == '6':  # Delete group menu item
             name = input('What is the email address of the group?')
@@ -417,30 +417,31 @@ def groups():  # Groups Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             groups()
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             groups()
 
 
 def classroom():  # Classroom Management Main Menu
     while True:
-        print('Classroom Management Main Menu:')
         print('\n')
-        print('1)\tManage Courses')
-        print('2)\tManage Course Participants')
-        print('3)\tManage Guardians')
-        print('4)\tReports')
-        print('0)\tBack')
+        print('\033[95mClassroom Management Main Menu:\033[0m')
+        print('\n')
+        print('1)   Manage Courses')
+        print('2)   Manage Course Participants')
+        print('3)   Manage Guardians')
+        print('4)   Reports')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # Manage courses menu item. Calls classroom1() function.
             classroom1()
         elif selection == '2':  # Manage course participants menu item
@@ -452,7 +453,7 @@ def classroom():  # Classroom Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom()
         elif selection == '3':  # Manage guardians menu item. Calls classroom3() function.
             classroom3()
@@ -461,23 +462,23 @@ def classroom():  # Classroom Management Main Menu
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid selection error. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom()
 
 
 def devices():  # Device Management Main Menu
     while True:
         print('\n')
-        print('Chrome Device Management Main Menu:')
+        print('\033[95mChrome Device Management Main Menu:\033[0m')
         print('\n')
-        print('1)\tGet Device ID of a Chrome OS Device')
-        print('2)\tUpdate Device Info')
-        print('3)\tExport Device Info')
-        print('4)\tDisable, De-provision, or Re-Enable a Device')
-        print('0)\tBack')
+        print('1)   Get Device ID of a Chrome OS Device')
+        print('2)   Update Device Info')
+        print('3)   Export Device Info')
+        print('4)   Disable, De-provision, or Re-Enable a Device')
+        print('0)   Back')
         print('\n')
 
         selection = input('Please Choose an Option: ')
@@ -487,7 +488,7 @@ def devices():  # Device Management Main Menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices()
         elif selection == '2':  # Update info menu item
             cr_id = input('Please enter the Chrome Device Serial Number: ')
@@ -505,7 +506,7 @@ def devices():  # Device Management Main Menu
                 os.system(cmd2)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 f.close()
                 os.system('rm -rf id.txt')
                 devices()
@@ -516,16 +517,16 @@ def devices():  # Device Management Main Menu
                 os.system(cmd2)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 f.close()
                 os.system('rm -rf id.txt')
                 devices()
             else:
-                print("Unknown Option Selected!")
+                print("\033[1m\033[91mInvalid Option Selected!\033[0m")
                 time.sleep(1)
                 f.close()
                 os.system('rm -rf id.txt')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 devices()
         elif selection == '3':  # Export device info menu item. Calls devices3() function.
             devices3()
@@ -534,25 +535,26 @@ def devices():  # Device Management Main Menu
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid Selection. Returns to current menu
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices()
 
 
 def classroom1():
     while True:
-        print('Course Management Menu:')
         print('\n')
-        print('1)\tCreate Course')
-        print('2)\tUpdate Course')
-        print('3)\tGet Course Info')
-        print('4)\tDelete Course')
-        print('0)\tBack')
+        print('\033[96mCourse Management Menu:\033[0m')
+        print('\n')
+        print('1)   Create Course')
+        print('2)   Update Course')
+        print('3)   Get Course Info')
+        print('4)   Delete Course')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # Create course menu item
             al = input('What is the course alias? (All lower lase, no spaces)')
             name = input('What is the course name? ')
@@ -565,7 +567,7 @@ def classroom1():
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom()
         elif selection == '2':  # Update course menu item. Calls classroom1_2() function
             classroom1_2()
@@ -575,7 +577,7 @@ def classroom1():
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom()
         elif selection == '4':  # Delete course menu item
             al = input('What is the course ID or alias? ')
@@ -585,46 +587,47 @@ def classroom1():
                 os.system(cmd)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 classroom()
             elif yn == '' or yn == 'n' or yn == 'no' or yn == 'N' or yn == 'No':
                 classroom()
             else:
-                print("Unknown Option Selected!")
+                print("\033[1m\033[91mInvalid Option Selected!\033[0m")
                 time.sleep(1)
                 classroom()
         elif selection == '0':  # Back to classroom main menu
             classroom()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
 
 
 def classroom1_2():  # Classroom main menu option 1, submenu 2
     al = input('What is the course ID or alias that will be updated? ')
     while True:
-        print('Update What? ')
         print('\n')
-        print('1)\tName')
-        print('2)\tSection')
-        print('3)\tHeading')
-        print('4)\tRoom')
-        print('5)\tStatus')
-        print('6)\tTeacher')
-        print('0)\tBack')
+        print('\033[93mUpdate What?\033[0m ')
+        print('\n')
+        print('1)   Name')
+        print('2)   Section')
+        print('3)   Heading')
+        print('4)   Room')
+        print('5)   Status')
+        print('6)   Teacher')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # Update name menu item
             name = input('Enter the new name: ')
             cmd = '~/bin/gam/gam update course ' + al + ' name ' + name
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
         elif selection == '2':  # Update section menu item
             name = input('Enter new section: ')
@@ -632,7 +635,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
         elif selection == '3':  # Update heading menu item
             name = input('Enter new heading: ')
@@ -640,7 +643,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
         elif selection == '4':  # Update room menu item
             name = input('Enter new room: ')
@@ -648,7 +651,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
         elif selection == '5':  # Update status menu item
             name = input('Enter new status (Must be uppercase): [ACTIVE | ARCHIVED | DECLINED] ')
@@ -656,7 +659,7 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
         elif selection == '6':  # Update teacher menu item
             name = input('Enter new teacher username: ')
@@ -664,29 +667,30 @@ def classroom1_2():  # Classroom main menu option 1, submenu 2
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1()
         elif selection == '0':  # Back to previous menu
             classroom1()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom1_2()
 
 
 def classroom3():  # Classroom main menu option 3 submenu
     while True:
-        print('Guardian Management Menu:')
         print('\n')
-        print('1)\tInvite Guardian')
-        print('2)\tDelete Guardian')
-        print("3)\tView a Student's Guardian(s)")
-        print('0)\tBack')
+        print('\033[96mGuardian Management Menu:\033[0m')
+        print('\n')
+        print('1)   Invite Guardian')
+        print('2)   Delete Guardian')
+        print("3)   View a Student's Guardian(s)")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # Invite guardian menu item
             stu = input("What is the student's username? ")
             guard = input("What is the guardian's email address? ")
@@ -694,7 +698,7 @@ def classroom3():  # Classroom main menu option 3 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom3()
         elif selection == '2':  # Delete guardian menu item
             stu = input("What is the student's username? ")
@@ -703,7 +707,7 @@ def classroom3():  # Classroom main menu option 3 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom3()
         elif selection == '3':  # View a student's guardian(s) menu item
             stu = input("What is the student's username? ")
@@ -711,36 +715,37 @@ def classroom3():  # Classroom main menu option 3 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom3()
         elif selection == '0':  # Back to Classroom main menu
             classroom()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom3()
 
 
 def classroom4():  # Classroom main menu option 4 submenu
     while True:
-        print('Classroom Reports Menu:')
         print('\n')
-        print("1)\tView a Teacher's Courses")
-        print("2)\tView a Student's Courses")
-        print("3)\tView a Course's Participants")
-        print('0)\tBack')
+        print('\033[96mClassroom Reports Menu:\033[0m')
+        print('\n')
+        print("1)   View a Teacher's Courses")
+        print("2)   View a Student's Courses")
+        print("3)   View a Course's Participants")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
         if selection == '1':  # View teacher's courses menu item
             user = input("What is the teacher's username? ")
             cmd = '~/bin/gam/gam print courses teacher ' + user + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom4()
         elif selection == '2':  # View student's courses menu item
             user = input("What is the student's username? ")
@@ -748,7 +753,7 @@ def classroom4():  # Classroom main menu option 4 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom4()
         elif selection == '3':  # View course participants menu item
             al = input('What is the course ID or alias? ')
@@ -758,40 +763,40 @@ def classroom4():  # Classroom main menu option 4 submenu
                 os.system(cmd)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 classroom4()
             elif file == 'n' or file == 'N' or file == 'no' or file == 'No':
                 cmd = '~/bin/gam/gam print course-participants course ' + al
                 os.system(cmd)
                 time.sleep(2)
                 print('\n')
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 classroom4()
             else:
-                print("Unknown Option Selected!")
+                print("\033[1m\033[91mInvalid Option Selected!\033[0m")
                 print('\n')
                 time.sleep(2)
-                input("Press ENTER to Continue...")
+                input("\033[1mPress ENTER to Continue...\033[0m")
                 classroom4()
         elif selection == '0':  # Back to classroom main menu
             classroom()
         else:  # Invalid selection. Returns to current menu
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             classroom4()
 
 
 def devices3():  # Devices main menu option 3 submenu
     while True:
         print('\n')
-        print('Chrome Device Info Menu:')
+        print('\033[96mChrome Device Info Menu:\033[0m')
         print('\n')
-        print('1)\tView Single Device Info')
-        print('2)\tExport All Devices in an OU')
-        print('3)\tExport All Devices')
-        print('0)\tBack')
+        print('1)   View Single Device Info')
+        print('2)   Export All Devices in an OU')
+        print('3)   Export All Devices')
+        print('0)   Back')
         print('\n')
 
         selection = input('Please Choose an Option: ')
@@ -809,7 +814,7 @@ def devices3():  # Devices main menu option 3 submenu
             f.close()
             os.system('rm -rf id.txt')
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices3()
         elif selection == '2':  # Export devices in ou menu item
             ou = input('Please enter the full path of the OU you wish to export (Case Sensitive): ')
@@ -820,7 +825,7 @@ def devices3():  # Devices main menu option 3 submenu
             print('Exported as ' + ou2 + '-export.csv')
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices3()
         elif selection == '3':  # Export all devices menu item
             cmd = '~/bin/gam/gam print cros full > all-devices.csv'
@@ -829,27 +834,27 @@ def devices3():  # Devices main menu option 3 submenu
             print('Device list exported as all-devices.csv')
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices3()
         elif selection == '0':  # Back to devices main menu
             devices()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices3()
 
 
 def devices4():  # Devices main menu option 4 submenu
     while True:
         print('\n')
-        print('Disable/De-Provision/Re-Enable Menu:')
+        print('\033[96mDisable/De-Provision/Re-Enable Menu:\033[0m')
         print('\n')
-        print('1)\tDisable')
-        print('2)\tRe-Enable')
-        print('3)\tDe-Provision')
-        print('0)\tBack')
+        print('1)   Disable')
+        print('2)   Re-Enable')
+        print('3)   De-Provision')
+        print('0)   Back')
         print('\n')
 
         selection = input('Please Choose an Option: ')
@@ -867,7 +872,7 @@ def devices4():  # Devices main menu option 4 submenu
             f.close()
             os.system('rm -rf id.txt')
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4()
         elif selection == '2':  # Re-enable menu item
             cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
@@ -883,29 +888,29 @@ def devices4():  # Devices main menu option 4 submenu
             f.close()
             os.system('rm -rf id.txt')
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4()
         elif selection == '3':  # Deprovision menu item. Calls devices4_3() function
             devices4_3()
         elif selection == '0':  # Back to devices main menu
             devices()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4()
 
 
 def devices4_3():  # Devices Main menu option 4. submenu 3
     while True:
         print('\n')
-        print('De-Provision Menu:')
+        print('\033[36mDe-Provision Menu:\033[0m')
         print('\n')
-        print('1)\tDe-Provision to Replace With Same Model')
-        print('2)\tDe-Provision to Replace With Different Model')
-        print('3)\tDe-Provision to Retire')
-        print('0)\tBack')
+        print('1)   De-Provision to Replace With Same Model')
+        print('2)   De-Provision to Replace With Different Model')
+        print('3)   De-Provision to Retire')
+        print('0)   Back')
         print('\n')
 
         selection = input('Please Choose an Option: ')
@@ -924,7 +929,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             f.close()
             os.system('rm -rf id.txt')
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4_3()
         elif selection == '2':  # Replace with diff model menu item
             cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
@@ -940,7 +945,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             time.sleep(2)
             f.close()
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4_3()
         elif selection == '3':  # Retire menu item
             cr_id = input('Please enter the Chrome Device Serial Number (Case sensitive): ')
@@ -957,32 +962,32 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             f.close()
             os.system('rm -rf id.txt')
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4_3()
         elif selection == '0':  # Return to previous menu
             devices4()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             devices4_3()
 
 
 def email():  # Email Management main menu
     while True:
         print('\n')
-        print('Email Management Menu:')
+        print('\033[95mEmail Management Menu:\033[0m')
         print('\n')
-        print('1)\tUser Signature and Vacation Message')
-        print('2)\tLabels and Filters')
-        print('3)\tIMAP and POP Settings')
-        print('4)\tSend As Settings')
-        print('5)\tProfile Settings')
-        print('0)\tBack')
+        print('1)   User Signature and Vacation Message')
+        print('2)   Labels and Filters')
+        print('3)   IMAP and POP Settings')
+        print('4)   Send As Settings')
+        print('5)   Profile Settings')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Edit User's signature
             email1()
@@ -997,28 +1002,28 @@ def email():  # Email Management main menu
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email()
 
 
 def email1():  # Email main menu option 1 submenu
     while True:
         print('\n')
-        print('User Signature Management Menu:')
+        print('\033[96mUser Signature Management Menu:\033[0m')
         print('\n')
-        print('1)\tSet User Signature From Text File')
-        print('2)\tSet User Signature From HTML File')
-        print('3)\tSet User Signature Manually')
-        print("4)\tView a User's Signature")
-        print("5)\tSet a User's Vacation Responder")
-        print("6)\tTurn off a User's Vacation Responder")
-        print('0)\tBack')
+        print('1)   Set User Signature From Text File')
+        print('2)   Set User Signature From HTML File')
+        print('3)   Set User Signature Manually')
+        print("4)   View a User's Signature")
+        print("5)   Set a User's Vacation Responder")
+        print("6)   Turn off a User's Vacation Responder")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Set sig from txt file
             usr = input('Please enter a username:  ')
@@ -1027,7 +1032,7 @@ def email1():  # Email main menu option 1 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '2':  # Set sig from html file
             usr = input('Please enter a username:  ')
@@ -1036,7 +1041,7 @@ def email1():  # Email main menu option 1 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '3':  # Set sig manually
             usr = input('Please enter a username:  ')
@@ -1047,7 +1052,7 @@ def email1():  # Email main menu option 1 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '4':  # View user's signature
             usr = input('Please enter a username:  ')
@@ -1055,7 +1060,7 @@ def email1():  # Email main menu option 1 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '5':  # Set vacation responder
             usr = input('Please enter a username:  ')
@@ -1066,7 +1071,7 @@ def email1():  # Email main menu option 1 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '6':  # Turn off responder
             usr = input('Please enter a username:  ')
@@ -1074,32 +1079,32 @@ def email1():  # Email main menu option 1 submenu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '0':  # Back to main menu
             email()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
 
 
 def email2():  # Email main menu option 2 menu
     while True:
         print('\n')
-        print('Labels and Filters Menu:')
+        print('\033[96mLabels and Filters Menu:\033[0m')
         print('\n')
-        print('1)\tCreate a Label')
-        print("2)\tView User's Labels")
-        print('3)\tDelete a Label')
-        print('4)\tCreate a Filter')
-        print("5)\tView a User's Filters")
-        print('0)\tBack')
+        print('1)   Create a Label')
+        print("2)   View User's Labels")
+        print('3)   Delete a Label')
+        print('4)   Create a Filter')
+        print("5)   View a User's Filters")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Create a label
             usr = input('Please enter a username:  ')
@@ -1108,7 +1113,7 @@ def email2():  # Email main menu option 2 menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '2':  # View labels
             usr = input('Please enter a username:  ')
@@ -1116,7 +1121,7 @@ def email2():  # Email main menu option 2 menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '3':  # Delete Label
             usr = input('Please enter a username:  ')
@@ -1125,7 +1130,7 @@ def email2():  # Email main menu option 2 menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '4':  # Create Filter
             email2_4()
@@ -1135,30 +1140,30 @@ def email2():  # Email main menu option 2 menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email1()
         elif selection == '0':  # Back to main menu
             email()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email2()
 
 
 def email2_4():  # create filter menu
     while True:
         print('\n')
-        print('Filter Criteria:')
+        print('\033[36mFilter Criteria:\033[0m')
         print('\n')
-        print('1)\t"FROM" Address Only')
-        print('2)\t"FROM" Address and Subject')
-        print('3)\tSubject Only')
-        print('0)\tBack')
+        print('1)   "FROM" Address Only')
+        print('2)   "FROM" Address and Subject')
+        print('3)   Subject Only')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Filter by from address only
             usr = input('Please enter a username:  ')
@@ -1170,7 +1175,7 @@ def email2_4():  # create filter menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email2_4()
         elif selection == '2':  # Filter by address and subject
             usr = input('Please enter a username:  ')
@@ -1184,7 +1189,7 @@ def email2_4():  # create filter menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email2_4()
         elif selection == '3':  # Filter by subject
             usr = input('Please enter a username:  ')
@@ -1196,29 +1201,29 @@ def email2_4():  # create filter menu
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email2_4()
         elif selection == '0':  # Back to main menu
             email2()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email2_4()
 
 
 def email3():  # Pop and imap settings
     while True:
         print('\n')
-        print('IMAP and POP Settings:')
+        print('\033[96mIMAP and POP Settings:\033[0m')
         print('\n')
-        print('1)\tTurn IMAP/POP On or Off for a User')
-        print('2)\tShow IMAP/POP status for a User')
-        print('0)\tBack')
+        print('1)   Turn IMAP/POP On or Off for a User')
+        print('2)   Show IMAP/POP status for a User')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # IMAP/POP on/off
             usr = input('Please enter a username:  ')
@@ -1228,7 +1233,7 @@ def email3():  # Pop and imap settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email3()
         elif selection == '2':  # IMAP/POP status
             usr = input('Please enter a username:  ')
@@ -1237,31 +1242,31 @@ def email3():  # Pop and imap settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email3()
         elif selection == '0':  # Back to main menu
             email()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email3()
 
 
 def email4():  # Send As settings
     while True:
         print('\n')
-        print('Send As Settings Menu:')
+        print('\033[96mSend As Settings Menu:\033[0m')
         print('\n')
-        print('1)\tAdd Send As Address')
-        print('2)\tUpdate Send As Address')
-        print('3)\tDelete Send As Address')
-        print('4)\tShow Send As Addresses for a User')
-        print('0)\tBack')
+        print('1)   Add Send As Address')
+        print('2)   Update Send As Address')
+        print('3)   Delete Send As Address')
+        print('4)   Show Send As Addresses for a User')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Add send as address
             usr = input('Please enter a username:  ')
@@ -1272,7 +1277,7 @@ def email4():  # Send As settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email4()
         elif selection == '2':  # Update send as
             usr = input('Please enter a username:  ')
@@ -1283,7 +1288,7 @@ def email4():  # Send As settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email4()
         elif selection == '3':  # delete send as
             usr = input('Please enter a username:  ')
@@ -1292,7 +1297,7 @@ def email4():  # Send As settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email4()
         elif selection == '4':  # View send as
             usr = input('Please enter a username:  ')
@@ -1300,32 +1305,32 @@ def email4():  # Send As settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email4()
         elif selection == '0':  # Back to main menu
             email()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email4()
 
 
 def email5():  # Profile Settings
     while True:
         print('\n')
-        print('Profile Settings Menu:')
+        print('\033[96mProfile Settings Menu:\033[0m')
         print('\n')
-        print('1)\tAdd/Update User Profile Photo')
-        print("2)\tDownload User's Profile Photo")
-        print("3)\tDelete User's Profile Photo")
-        print("4)\tShow User's Gmail Profile")
-        print("5)\tShow User's Google+ Profile")
-        print('0)\tBack')
+        print('1)   Add/Update User Profile Photo')
+        print("2)   Download User's Profile Photo")
+        print("3)   Delete User's Profile Photo")
+        print("4)   Show User's Gmail Profile")
+        print("5)   Show User's Google+ Profile")
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Update profile photo
             usr = input('Please enter a username:  ')
@@ -1335,7 +1340,7 @@ def email5():  # Profile Settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email5()
         elif selection == '2':  # Download profile photo
             usr = input('Please enter a username:  ')
@@ -1344,7 +1349,7 @@ def email5():  # Profile Settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email5()
         elif selection == '3':  # Delete profile photo
             usr = input('Please enter a username:  ')
@@ -1352,7 +1357,7 @@ def email5():  # Profile Settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email5()
         elif selection == '4':  # Show Gmail profile
             usr = input('Please enter a username:  ')
@@ -1360,7 +1365,7 @@ def email5():  # Profile Settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email5()
         elif selection == '4':  # Show Google+ profile
             usr = input('Please enter a username:  ')
@@ -1368,32 +1373,33 @@ def email5():  # Profile Settings
             os.system(cmd)
             time.sleep(2)
             print('\n')
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email5()
         elif selection == '0':  # Back to main menu
             email()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             email5()
 
 
 def bulk():  # Bulk operations main menu
     while True:
         print('\n')
-        print('Bulk Operations Menu:')
+        print('\033[95mBulk Operations Menu:\033[0m')
         print('\n')
-        print('WARNING: Using these will affect multiple users. Some actions are unrecoverable. PROCEED WITH CAUTION!')
-        print('\n\n')
-        print('1)\tGAM Using "ALL USERS" or OU')
-        print('2)\tGAM Batch Mode Using CSV Files')
-        print('3)\tGAM Batch Mode Using Text Files')
-        print('0)\tBack')
+        print('\033[1m\033[91mWARNING: Using these will affect multiple users. Some actions are unrecoverable.'
+              ' PROCEED WITH CAUTION! \033[0m')
+        print('\n')
+        print('1)   GAM Using "ALL USERS" or OU')
+        print('2)   GAM Batch Mode Using CSV Files')
+        print('3)   GAM Batch Mode Using Text Files')
+        print('0)   Back')
         print('\n')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  # Traditional commands
             trad()
@@ -1404,10 +1410,10 @@ def bulk():  # Bulk operations main menu
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid selection. returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             bulk()
 
 
@@ -1416,42 +1422,43 @@ def trad():  # Traditional commands
         print('\n')
         print('ALL USERS/OU Operations Menu:')
         print('\n')
-        print('1)\t')
-        print('0)\tBack')
+        print('1)   ')
+        print('0)   Back')
 
-        selection = input("Please Choose an Option: ")
+        selection = input("\033[1mPlease Choose an Option:\033[0m  ")
 
         if selection == '1':  #
             print('\nCOMING SOON!\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             bulk()
         elif selection == '0':  # Return to the previous menu
             bulk()
         else:  # Invalid selection. Returns to current menu.
-            print("Unknown Option Selected!")
+            print("\033[1m\033[91mInvalid Option Selected!\033[0m")
             print('\n')
             time.sleep(2)
-            input("Press ENTER to Continue...")
+            input("\033[1mPress ENTER to Continue...\033[0m")
             trad()
 
 
 def batch():  # GAM batch file commands
-    print('\nThe file to be used in this batch mode must have a full GAM command, one per line, with correct syntax\n')
-    file = input('Please enter the full path to the file to be used:  ')
+    print('\033[1m\nThe file to be used in this batch mode must have a full GAM command, one per line,'
+          ' with correct syntax\n\033[0m')
+    file = input('Please enter the full path of the file to be used:  ')
     cmd = '~/bin/gam/gam batch ' + file
     os.system(cmd)
     time.sleep(2)
     print('\n')
-    input("Press ENTER to Continue...")
+    input("\033[1mPress ENTER to Continue...\033[0m")
     bulk()
 
 
 def csv():  # GAM CSV file batch mode
-    print('COMING SOON!')
+    print('\nCOMING SOON!\n')
     time.sleep(2)
     print('\n')
-    input("Press ENTER to Continue...")
+    input("\033[1mPress ENTER to Continue...\033[0m")
     bulk()
 
 
