@@ -25,7 +25,7 @@
 # This program relies on GAM to function. You must install and configure it before using this program.
 # GAM can be found at: https://github.com/jay0lee/GAM
 
-# See line 349 for a domain specific setting that will need changed.
+# See line 589 for a domain specific setting that will need changed.
 
 import os
 import time
@@ -61,7 +61,7 @@ class Msgs:  # Various repeated messages
     cont = 'Press ENTER to Continue...'
     err = 'Invalid Option Selected!'
     choose = 'Please Choose an Option:  '
-    ent = 'Entity to apply to? [user | group | ou | all users]  '
+    ent = 'Entity to apply to: [user | group | ou | all users]  '
 
 
 def cred():
@@ -352,7 +352,7 @@ def drive():  # Drive Management Main Menu
         print('\n')
         print(Color.PURPLE + 'Drive Management Menu:' + Color.END)
         print('\n')
-        print("1)   Export a List of a User's Drive Files")
+        print("1)   Export a List of a User(s) Drive Files")
         print("2)   Upload a Local File To a Google Drive")
         print("3)   View a Team Drive(s)")
         print('4)   Create a Team Drive')
@@ -365,16 +365,18 @@ def drive():  # Drive Management Main Menu
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                user1 = user
                 cmd = Gam.user + user + " show filelist allfields > " + user + "-filelist.csv"
             elif who == 'group':
                 user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                user1 = user
                 cmd = Gam.group + user + " show filelist allfields > " + user + "-filelist.csv"
             elif who == 'ou':
                 user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
-                cmd = Gam.ou + ' "' + user + '" show filelist allfields > ' + user.split('/')[-1] + '-filelist.csv'
-                user = user.split('/')[-1]
+                user1 = user.split('/')[-1]
+                cmd = Gam.ou + ' "' + user + '" show filelist allfields > ' + user1 + '-filelist.csv'
             elif who == 'all' or who == 'all users':
-                user = 'AllUsers'
+                user1 = 'AllUsers'
                 cmd = Gam.all + 'show filelist allfields > AllUsers-filelist.csv'
             else:
                 print(Color.RED + Msgs.err + Color.END)
@@ -383,7 +385,7 @@ def drive():  # Drive Management Main Menu
                 input(Color.GREEN + Msgs.cont + Color.END)
                 drive()
             os.system(cmd)
-            print(Color.YELLOW + '\nFile saved as ' + user + '-filelist.csv\n' + Color.END)
+            print(Color.YELLOW + '\nFile saved as ' + user1 + '-filelist.csv\n' + Color.END)
             time.sleep(2)
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
@@ -956,7 +958,7 @@ def devices3():  # Devices main menu option 3 submenu
             ou = input(Color.BOLD + 'Please enter the full path of the OU you wish to export (Case Sensitive):'
                        + Color.END)
             ou2 = ou.split("/")[-1]
-            cmd = Gam.gam + ' print cros full limit_to_ou "' + ou + '" > "' + ou2 + '"-export.csv'
+            cmd = Gam.gam + ' print cros full limit_to_ou "' + ou + '" > ' + ou2 + '-export.csv'
             os.system(cmd)
             time.sleep(1)
             print('Exported as ' + ou2 + '-export.csv')
@@ -1154,65 +1156,161 @@ def email1():  # Email main menu option 1 submenu
         print('1)   Set User Signature From Text File')
         print('2)   Set User Signature From HTML File')
         print('3)   Set User Signature Manually')
-        print("4)   View a User's Signature")
-        print("5)   Set a User's Vacation Responder")
-        print("6)   Turn off a User's Vacation Responder")
+        print("4)   View a User(s) Signature")
+        print("5)   Set a User(s) Vacation Responder")
+        print("6)   Turn off a User(s) Vacation Responder")
         print('0)   Back')
         print('\n')
 
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Set sig from txt file
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' signature file ' + txt
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + '  signature file ' + txt
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" signature file ' + txt
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + '  signature file ' + txt
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email1()
             txt = input(Color.BOLD + 'Please enter the full path to the text file to read:' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' signature file ' + txt
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '2':  # Set sig from html file
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            html = input(Color.BOLD + 'Please enter the full path to the html file to read:' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' signature file ' + html + ' html'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' signature file ' + txt + ' html'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + '  signature file ' + txt + ' html'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" signature file ' + txt + ' html'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + '  signature file ' + txt + ' html'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email1()
+            txt = input(Color.BOLD + 'Please enter the full path to the html file to read:' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '3':  # Set sig manually
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' signature  "' + txt + '"'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + '  signature  "' + txt + '"'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" signature  "' + txt + '"'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + '  signature  "' + txt + '"'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email1()
             print('Line breaks must be designated by <br>. EX: Acme Inc<br>123 Main Ave<br>http://www.acme.com')
             time.sleep(1)
             txt = input(Color.BOLD + 'Please enter the full text of the signature:' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' signature "' + txt + '"'
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '4':  # View user's signature
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show signature'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' show signature format'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' show signature format'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" show signature format'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' show signature format'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email1()
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '5':  # Set vacation responder
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' vacation on subject "' + sub + '" message "' + mes + '"'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' vacation on subject "' + sub + '" message "' + mes + '"'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" vacation on subject "' + sub + '" message "' + mes + '"'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' vacation on subject "' + sub + '" message "' + mes + '"'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email1()
             sub = input(Color.BOLD + 'Please enter a message subject: ' + Color.END)
             print('Line breaks must be designated using the "\ n" (no space).')
             mes = input(Color.BOLD + 'Please enter the vacation message: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' vacation on subject "' + sub + '" message "' + mes + '"'
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '6':  # Turn off responder
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' vacation off'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' vacation off'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' vacation off'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" vacation off'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' vacation off'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email1()
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1234,51 +1332,115 @@ def email2():  # Email main menu option 2 menu
         print(Color.CYAN + 'Labels and Filters Menu:' + Color.END)
         print('\n')
         print('1)   Create a Label')
-        print("2)   View User's Labels")
+        print("2)   View User(s) Labels")
         print('3)   Delete a Label')
         print('4)   Create a Filter')
-        print("5)   View a User's Filters")
+        print("5)   View User(s) Filters")
         print('0)   Back')
         print('\n')
 
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Create a label
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' label "' + lab + '"'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' label "' + lab + '"'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" label "' + lab + '"'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' label "' + lab + '"'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2()
             lab = input(Color.BOLD + 'Please enter a name for the label: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' label "' + lab + '"'
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
-            email1()
+            email2()
         elif selection == '2':  # View labels
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show labels'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' show labels'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' show labels'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" show labels'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' show labels'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2()
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
-            email1()
+            email2()
         elif selection == '3':  # Delete Label
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' delete label "' + lab + '"'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' delete label "' + lab + '"'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" delete label "' + lab + '"'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' delete label "' + lab + '"'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2()
             lab = input(Color.BOLD + 'Please enter the label name: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' delete label "' + lab + '"'
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
-            email1()
+            email2()
         elif selection == '4':  # Create Filter
             email2_4()
         elif selection == '5':  # View user's filters
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show filters'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' show filters'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' show filters'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" show filters'
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' show filters'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2()
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
-            email1()
+            email2()
         elif selection == '0':  # Back to main menu
             email()
         else:  # Invalid selection. returns to current menu.
@@ -1303,40 +1465,89 @@ def email2_4():  # create filter menu
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Filter by from address only
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' filter from ' + eml + ' label "' + lab + '" ' + act
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' filter from ' + eml + ' label "' + lab + '" ' + act
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" filter from ' + eml + ' label "' + lab + '" ' + act
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' filter from ' + eml + ' label "' + lab + '" ' + act
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2_4()
             eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
             print('Separate action using a space')
             act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
                         + Color.END)
             lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' filter from ' + eml + ' label "' + lab + '" ' + act
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email2_4()
         elif selection == '2':  # Filter by address and subject
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' filter from ' + eml + ' subject "' + sub + '" label "' + lab + '" ' + act
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' filter from ' + eml + ' subject "' + sub + '" label "' + lab + '" ' + act
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" filter from ' + eml + ' subject "' + sub + '" label "' + lab + '" '\
+                    + act
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' filter from ' + eml + ' subject "' + sub + '" label "' + lab + '" ' + act
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2_4()
             eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
             sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
             print('Separate action using a space')
             act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
                         + Color.END)
             lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' filter from ' + eml + ' subject "' + sub + '" label "' + lab + '" ' + act
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email2_4()
         elif selection == '3':  # Filter by subject
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' filter subject ' + sub + ' label "' + lab + '" ' + act
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' filter subject ' + sub + ' label "' + lab + '" ' + act
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" filter subject ' + sub + ' label "' + lab + '" ' + act
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' filter subject ' + sub + ' label "' + lab + '" ' + act
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email2_4()
             sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
             print('Separate action using a space')
             act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
                         + Color.END)
             lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' filter subject ' + sub + ' label "' + lab + '" ' + act
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1365,19 +1576,51 @@ def email3():  # Pop and imap settings
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # IMAP/POP on/off
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' ' + prot + ' ' + act
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' ' + prot + ' ' + act
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" ' + prot + ' ' + act
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' ' + prot + ' ' + act
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email3()
             prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
             act = input(Color.BOLD + 'Turn ON or OFF? [on | off] ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' ' + prot + ' ' + act
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email3()
         elif selection == '2':  # IMAP/POP status
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' show ' + prot
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' show ' + prot
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" show ' + prot
+            elif who == 'all' or who == 'all users':
+                cmd = Gam.all + ' show ' + prot
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email3()
             prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show ' + prot
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1438,9 +1681,30 @@ def email4():  # Send As settings
             input(Color.GREEN + Msgs.cont + Color.END)
             email4()
         elif selection == '4':  # View send as
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show sendas'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                user1 = user
+                cmd = Gam.user + user + ' print sendas > ' + user + '-sendas.csv'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                user1 = user
+                cmd = Gam.group + user + ' print sendas > ' + user + '-sendas.csv'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                user1 = user.split('/')[-1]
+                cmd = Gam.ou + ' "' + user + '" print sendas > ' + user1 + '-sendas.csv'
+            elif who == 'all' or who == 'all users':
+                user1 = 'AllUsers'
+                cmd = Gam.all + ' print sendas > ' + user1 + '-sendas.csv'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email4()
             os.system(cmd)
+            print(Color.YELLOW + '\nFile saved as ' + user1 + '-sendas.csv\n' + Color.END)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
@@ -1460,55 +1724,149 @@ def email5():  # Profile Settings
         print('\n')
         print(Color.CYAN + 'Profile Settings Menu:' + Color.END)
         print('\n')
-        print('1)   Add/Update User Profile Photo')
-        print("2)   Download User's Profile Photo")
-        print("3)   Delete User's Profile Photo")
-        print("4)   Show User's Gmail Profile")
-        print("5)   Show User's Google+ Profile")
+        print('1)   Add/Update User(s) Profile Photo')
+        print("2)   Download User(s) Profile Photo")
+        print("3)   Delete User(s) Profile Photo")
+        print("4)   Show User(s) Gmail Profile")
+        print("5)   Show User(s) Google+ Profile")
         print('0)   Back')
         print('\n')
 
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Update profile photo
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' update photo ' + fn
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' update photo ' + fn
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" update photo ' + fn
+            elif who == 'all' or who == 'all users':
+                user = 'AllUsers'
+                cmd = Gam.all + ' update photo ' + fn
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email5()
             print('Photos must be jpg format, and the file path and name are case sensitive.')
             fn = input(Color.BOLD + 'Please enter the full path to the photo you wish to upload: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' update photo ' + fn
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email5()
         elif selection == '2':  # Download profile photo
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            fn = input(Color.BOLD + 'Please enter the full path to folder to save the photo: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' get photo targetfolder ' + fn
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' get photo targetfolder ' + fn
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' get photo targetfolder ' + fn
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" get photo targetfolder ' + fn
+            elif who == 'all' or who == 'all users':
+                user = 'AllUsers'
+                cmd = Gam.all + ' get photo targetfolder ' + fn
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email5()
+            fn = input(Color.BOLD + 'Please enter the full path to a folder to save the photo(s): ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email5()
         elif selection == '3':  # Delete profile photo
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' delete photo'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' delete photo'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' delete photo'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                cmd = Gam.ou + ' "' + user + '" delete photo'
+            elif who == 'all' or who == 'all users':
+                user = 'AllUsers'
+                cmd = Gam.all + ' delete photo'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email5()
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email5()
         elif selection == '4':  # Show Gmail profile
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show gmailprofile'
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' show gmailprofile > ' + user + '-gmail-profile.csv'
+                user1 = user
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' show gmailprofile > ' + user + '-gmail-profile.csv'
+                user1 = user
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                user1 = user.split('/')[-1]
+                cmd = Gam.ou + ' "' + user + '" show gmailprofile > ' + user1 + '-gmail-profile.csv'
+            elif who == 'all' or who == 'all users':
+                user1 = 'AllUsers'
+                cmd = Gam.all + ' show gmailprofile > ' + user1 + '-gmail-profile.csv'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email5()
             os.system(cmd)
+            print(Color.YELLOW + '\nFile saved as ' + user1 + '-gmail-profile.csv\n' + Color.END)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email5()
         elif selection == '4':  # Show Google+ profile
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                cmd = Gam.user + user + ' show gplusprofile > ' + user + '-gplus-profile.csv'
+                user1 = user
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                cmd = Gam.group + user + ' show gplusprofile > ' + user + '-gplus-profile.csv'
+                user1 = user
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                user1 = user.split('/')[-1]
+                cmd = Gam.ou + ' "' + user + '" show gplusprofile > ' + user1 + '-gplus-profile.csv'
+            elif who == 'all' or who == 'all users':
+                user1 = 'AllUsers'
+                cmd = Gam.all + ' show gplusprofile > ' + user1 + '-gplus-profile.csv'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                email5()
             usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
             cmd = Gam.gam + ' user ' + usr + ' show gplusprofile'
             os.system(cmd)
+            print(Color.YELLOW + '\nFile saved as ' + user1 + '-gplus-profile.csv\n' + Color.END)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
@@ -1555,6 +1913,7 @@ def bulk():  # Bulk operations main menu
 def batch():  # GAM batch file commands
     print(Color.YELLOW + '\nThe file to be used in this batch mode must have a GAM command, one per line,'
           ' with correct syntax\n' + Color.END)
+    print(Color.RED + 'If the syntax in your file is incorrect, the entire operation will fail.\n' + Color.END)
     file = input(Color.BOLD + 'Please enter the full path of the file to be used: ' + Color.END)
     cmd = Gam.gam + ' batch ' + file
     os.system(cmd)
