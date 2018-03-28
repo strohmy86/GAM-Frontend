@@ -390,6 +390,8 @@ def drive():  # Drive Management Main Menu
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
         elif selection == '2':  # Upload file menu item
+            filename = input(Color.BOLD + "Please enter the full path to the file you wish to upload "
+                                          "(Case Sensitive):  " + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -408,8 +410,6 @@ def drive():  # Drive Management Main Menu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 drive()
-            filename = input(Color.BOLD + "Please enter the full path to the file you wish to upload "
-                                          "(Case Sensitive):  " + Color.END)
             os.system(cmd)
             print('\n')
             print("File uploaded successfully")
@@ -427,7 +427,7 @@ def drive():  # Drive Management Main Menu
                 cmd = Gam.group + user + ' print teamdrives todrive'
             elif who == 'ou':
                 user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
-                cmd = Gam.ou + user + ' print teamdrives todrive'
+                cmd = Gam.ou + '"' + user + '" print teamdrives todrive'
             elif who == 'all' or who == 'all users':
                 cmd = Gam.all + ' print teamdrives todrive'
             else:
@@ -1165,6 +1165,7 @@ def email1():  # Email main menu option 1 submenu
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Set sig from txt file
+            txt = input(Color.BOLD + 'Please enter the full path to the text file to read:' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1183,13 +1184,13 @@ def email1():  # Email main menu option 1 submenu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email1()
-            txt = input(Color.BOLD + 'Please enter the full path to the text file to read:' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '2':  # Set sig from html file
+            txt = input(Color.BOLD + 'Please enter the full path to the html file to read:' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1208,13 +1209,16 @@ def email1():  # Email main menu option 1 submenu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email1()
-            txt = input(Color.BOLD + 'Please enter the full path to the html file to read:' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '3':  # Set sig manually
+            print(Color.YELLOW + 'Line breaks must be designated by <br>. EX: Acme Inc<br>123 Main Ave<br>'
+                                 'http://www.acme.com' + Color.END)
+            time.sleep(1)
+            txt = input(Color.BOLD + 'Please enter the full text of the signature:' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1233,9 +1237,7 @@ def email1():  # Email main menu option 1 submenu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email1()
-            print('Line breaks must be designated by <br>. EX: Acme Inc<br>123 Main Ave<br>http://www.acme.com')
-            time.sleep(1)
-            txt = input(Color.BOLD + 'Please enter the full text of the signature:' + Color.END)
+
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1266,6 +1268,9 @@ def email1():  # Email main menu option 1 submenu
             input(Color.GREEN + Msgs.cont + Color.END)
             email1()
         elif selection == '5':  # Set vacation responder
+            sub = input(Color.BOLD + 'Please enter a message subject: ' + Color.END)
+            print(Color.YELLOW + 'Line breaks must be designated using the "\ n" (no space).' + Color.END)
+            mes = input(Color.BOLD + 'Please enter the vacation message: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1284,9 +1289,6 @@ def email1():  # Email main menu option 1 submenu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email1()
-            sub = input(Color.BOLD + 'Please enter a message subject: ' + Color.END)
-            print('Line breaks must be designated using the "\ n" (no space).')
-            mes = input(Color.BOLD + 'Please enter the vacation message: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1342,6 +1344,7 @@ def email2():  # Email main menu option 2 menu
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Create a label
+            lab = input(Color.BOLD + 'Please enter a name for the label: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1360,7 +1363,6 @@ def email2():  # Email main menu option 2 menu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email2()
-            lab = input(Color.BOLD + 'Please enter a name for the label: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1391,6 +1393,7 @@ def email2():  # Email main menu option 2 menu
             input(Color.GREEN + Msgs.cont + Color.END)
             email2()
         elif selection == '3':  # Delete Label
+            lab = input(Color.BOLD + 'Please enter the label name: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1409,7 +1412,6 @@ def email2():  # Email main menu option 2 menu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email2()
-            lab = input(Color.BOLD + 'Please enter the label name: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1465,6 +1467,11 @@ def email2_4():  # create filter menu
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Filter by from address only
+            eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
+            print('Separate action using a space')
+            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
+                        + Color.END)
+            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1483,17 +1490,18 @@ def email2_4():  # create filter menu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email2_4()
-            eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
-            print('Separate action using a space')
-            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
-                        + Color.END)
-            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email2_4()
         elif selection == '2':  # Filter by address and subject
+            eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
+            sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
+            print('Separate action using a space')
+            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
+                        + Color.END)
+            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1513,18 +1521,17 @@ def email2_4():  # create filter menu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email2_4()
-            eml = input(Color.BOLD + 'Please enter an email address to filter on: ' + Color.END)
-            sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
-            print('Separate action using a space')
-            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
-                        + Color.END)
-            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email2_4()
         elif selection == '3':  # Filter by subject
+            sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
+            print('Separate action using a space')
+            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
+                        + Color.END)
+            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1543,11 +1550,6 @@ def email2_4():  # create filter menu
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email2_4()
-            sub = input(Color.BOLD + 'Please enter a subject to filter on: ' + Color.END)
-            print('Separate action using a space')
-            act = input(Color.BOLD + 'What action to take? [markread | archive | star | trash | neverspam] '
-                        + Color.END)
-            lab = input(Color.BOLD + 'Please enter a label for the filtered messages: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1576,6 +1578,8 @@ def email3():  # Pop and imap settings
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # IMAP/POP on/off
+            prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
+            act = input(Color.BOLD + 'Turn ON or OFF? [on | off] ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1594,14 +1598,13 @@ def email3():  # Pop and imap settings
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email3()
-            prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
-            act = input(Color.BOLD + 'Turn ON or OFF? [on | off] ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email3()
         elif selection == '2':  # IMAP/POP status
+            prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1620,7 +1623,6 @@ def email3():  # Pop and imap settings
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email3()
-            prot = input(Color.BOLD + 'What protocol? [pop | imap] ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1735,6 +1737,9 @@ def email5():  # Profile Settings
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Update profile photo
+            print(Color.YELLOW + 'Photos must be jpg format, and the file path and name are case sensitive.' \
+                  + Color.END)
+            fn = input(Color.BOLD + 'Please enter the full path to the photo you wish to upload: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1754,14 +1759,13 @@ def email5():  # Profile Settings
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email5()
-            print('Photos must be jpg format, and the file path and name are case sensitive.')
-            fn = input(Color.BOLD + 'Please enter the full path to the photo you wish to upload: ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             email5()
         elif selection == '2':  # Download profile photo
+            fn = input(Color.BOLD + 'Please enter the full path to a folder to save the photo(s): ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -1781,7 +1785,6 @@ def email5():  # Profile Settings
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email5()
-            fn = input(Color.BOLD + 'Please enter the full path to a folder to save the photo(s): ' + Color.END)
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -1863,8 +1866,6 @@ def email5():  # Profile Settings
                 time.sleep(2)
                 input(Color.GREEN + Msgs.cont + Color.END)
                 email5()
-            usr = input(Color.BOLD + 'Please enter a username: ' + Color.END)
-            cmd = Gam.gam + ' user ' + usr + ' show gplusprofile'
             os.system(cmd)
             print(Color.YELLOW + '\nFile saved as ' + user1 + '-gplus-profile.csv\n' + Color.END)
             time.sleep(2)
