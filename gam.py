@@ -132,6 +132,7 @@ def users():  # User Management Main Menu
         print('2)   Export List of All Users')
         print('3)   Activate Suspended User')
         print('4)   Suspend User')
+        print('5)   Transfer Drive Files')
         print('0)   Back')
         print('\n')
 
@@ -166,6 +167,15 @@ def users():  # User Management Main Menu
         elif selection == '4':  # Suspend a user menu item
             username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = Gam.gam + " update user " + username + " suspended on"
+            os.system(cmd)
+            print('\n')
+            time.sleep(2)
+            input(Color.GREEN + Msgs.cont + Color.END)
+            users()
+        elif selection == '5':  # Transfer drive files from one user to another
+            user = input(Color.BOLD + 'Please enter username of source drive:  ' + Color.END)
+            user2 = input(Color.BOLD + 'Please enter username of destination drive:  ' + Color.END)
+            cmd = Gam.user + user + ' transfer drive ' + user2
             os.system(cmd)
             print('\n')
             time.sleep(2)
