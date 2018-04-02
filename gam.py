@@ -586,6 +586,7 @@ def classroom():  # Classroom Management Main Menu
             who = input(Color.BOLD + 'Is the person a student or a teacher? (Must be lower case) [student | teacher]'
                         + Color.END)
             user = input(Color.BOLD + "What is the person's username? " + Color.END)
+            # Change domain to match yours.
             cmd = Gam.gam + ' course ' + al + ' ' + act + ' ' + who + ' ' + user + '@madisonrams.net'
             os.system(cmd)
             time.sleep(2)
@@ -1737,7 +1738,7 @@ def email5():  # Profile Settings
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
         if selection == '1':  # Update profile photo
-            print(Color.YELLOW + 'Photos must be jpg format, and the file path and name are case sensitive.' \
+            print(Color.YELLOW + 'Photos must be jpg format, and the file path and name are case sensitive.'
                   + Color.END)
             fn = input(Color.BOLD + 'Please enter the full path to the photo you wish to upload: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
@@ -1751,7 +1752,6 @@ def email5():  # Profile Settings
                 user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
                 cmd = Gam.ou + ' "' + user + '" update photo ' + fn
             elif who == 'all' or who == 'all users':
-                user = 'AllUsers'
                 cmd = Gam.all + ' update photo ' + fn
             else:
                 print(Color.RED + Msgs.err + Color.END)
@@ -1777,7 +1777,6 @@ def email5():  # Profile Settings
                 user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
                 cmd = Gam.ou + ' "' + user + '" get photo targetfolder ' + fn
             elif who == 'all' or who == 'all users':
-                user = 'AllUsers'
                 cmd = Gam.all + ' get photo targetfolder ' + fn
             else:
                 print(Color.RED + Msgs.err + Color.END)
@@ -1802,7 +1801,6 @@ def email5():  # Profile Settings
                 user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
                 cmd = Gam.ou + ' "' + user + '" delete photo'
             elif who == 'all' or who == 'all users':
-                user = 'AllUsers'
                 cmd = Gam.all + ' delete photo'
             else:
                 print(Color.RED + Msgs.err + Color.END)
@@ -1897,9 +1895,9 @@ def bulk():  # Bulk operations main menu
 
         selection = input(Color.BOLD + Msgs.choose + Color.END)
 
-        if selection == '1':  # Traditional commands
+        if selection == '1':  # CSV Batch Mode
             csv()
-        elif selection == '2':  # CSV Batch Mode
+        elif selection == '2':  # Batch file mode
             batch()
         elif selection == '0':  # Back to main menu
             main_menu()
