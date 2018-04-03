@@ -51,10 +51,12 @@ class Gam:  # Various GAM arguments
     group = '~/bin/gam/gam group '
     ou = '~/bin/gam/gam ou '
     all = '~/bin/gam/gam all users '
-    update = ' update '
+    up = '~/bin/gam/gam update '
     add = 'add'
     remove = 'remove'
-    delete = 'delete'
+    de = '~/bin/gam/gam delete '
+    cr = '~/bin/gam/gam create '
+    info = '~/bin/gam/gam info '
     
     
 class Msgs:  # Various repeated messages
@@ -94,6 +96,7 @@ def main_menu():  # Main Menu
         print('6)   Device Management')
         print('7)   Email Management')
         print('8)   Bulk Operations')
+        print('9)   Vault Management')
         print('0)   Exit')
         print('\n')
 
@@ -116,6 +119,8 @@ def main_menu():  # Main Menu
             email()
         elif selection1 == '8':
             bulk()
+        elif selection1 == '9':
+            vault()
         else:
             print(Color.RED + Msgs.err + Color.END)
             print('\n')
@@ -364,9 +369,10 @@ def drive():  # Drive Management Main Menu
         print('\n')
         print("1)   Export a List of a User(s) Drive Files")
         print("2)   Upload a Local File To a Google Drive")
-        print("3)   View a Team Drive(s)")
-        print('4)   Create a Team Drive')
-        print("5)   Delete a Team Drive")
+        print("3)   Delete a User's Drive File")
+        print("4)   View a Team Drive(s)")
+        print('5)   Create a Team Drive')
+        print("6)   Delete a Team Drive")
         print('0)   Back')
         print('\n')
 
@@ -427,7 +433,16 @@ def drive():  # Drive Management Main Menu
             time.sleep(2)
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
-        elif selection == '3':  # View Team Drives menu item
+        elif selection == '3':  # Delete User's drive file
+            user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+            file = input(Color.BOLD + 'Please enter the file ID to be deleted:  ' + Color.END)
+            cmd = Gam.user + user + ' delete drivefile ' + file
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            drive()
+        elif selection == '4':  # View Team Drives menu item
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -453,7 +468,7 @@ def drive():  # Drive Management Main Menu
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
-        elif selection == '4':  # Create team drive for user menu item
+        elif selection == '6':  # Create team drive for user menu item
             user = input(Color.BOLD + "Please enter a username: " + Color.END)
             name = input(Color.BOLD + 'What is the name of the Team Drive?' + Color.END)
             cmd = Gam.gam + ' user ' + user + ' add teamdrive "' + name + '"'
@@ -462,7 +477,7 @@ def drive():  # Drive Management Main Menu
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
-        elif selection == '5':  # Delete user's Team Drive menu item
+        elif selection == '6':  # Delete user's Team Drive menu item
             user = input(Color.BOLD + "Please enter a username: " + Color.END)
             dr_id = input(Color.BOLD + 'What is the Team Drive ID? (Not the name)' + Color.END)
             cmd = Gam.gam + ' user ' + user + ' delete teamdrive ' + dr_id
@@ -1938,6 +1953,230 @@ def csv():  # GAM CSV file batch mode
     print('\n')
     input(Color.GREEN + Msgs.cont + Color.END)
     bulk()
+
+
+def vault():  # Vault Management
+    while True:
+        print('\n')
+        print(Color.PURPLE + 'Vault Management Menu:' + Color.END)
+        print('\n')
+        print('1)   Create Matter')
+        print('2)   Update Matter')
+        print('3)   Retrieve Matter Info')
+        print('4)   Create Hold')
+        print('5)   Update Hold')
+        print('6)   Retrieve Hold Info')
+        print('0)   Back')
+        print('\n')
+
+        selection = input(Color.BOLD + Msgs.choose + Color.END)
+
+        if selection == '1':  # Create Matter
+            name = input(Color.BOLD + 'Please enter a name for the matter:  ' + Color.END)
+            desc = input(Color.BOLD + 'Please enter a short description for the matter:  ' + Color.END)
+            collab = input(Color.BOLD + 'Would you like to add collaborators [y/N]?  ' + Color.END)
+            if collab == 'n' or collab == 'no':
+                cmd = Gam.cr + 'vaultmatter name "' + name + '" description "' + desc + '"'
+            elif collab == 'y' or collab == 'yes':
+                collab1 = input(Color.BOLD + ' Please enter collaborator email address(es), '
+                                'separated by commas without spaces:  ')
+                cmd = Gam.cr + 'vaultmatter name "' + name + '" description "' + desc + '" collaborators "' \
+                    + collab1 + '"'
+            else:  # Invalid selection. returns to current menu.
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                vault()
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault()
+        elif selection == '2':  # Update Matter
+            vault2()
+        elif selection == '3':  # Retrieve Matter Info
+            name = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            cmd = Gam.info + ' vaultmatter "' + name + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault()
+        elif selection == '4':  # Create Hold
+            matname = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            name = input(Color.BOLD + 'Please enter a name for the hold:  ' + Color.END)
+            corpus = input(Color.BOLD + 'Hold what items? [mail | drive]  ' + Color.END)
+            wt = input(Color.BOLD + 'Individual users or OU [user | ou]?  ' + Color.END)
+            start = input(Color.BOLD + 'What is the start time [YYYY-MM-DD]?  ' + Color.END)
+            end = input(Color.BOLD + 'What is the end time [YYYY-MM-DD]?  ' + Color.END)
+            if wt == 'user':
+                user = input(Color.BOLD + 'Please enter 1 or more email addresses separated by commas (no spaces):  '
+                             + Color.END)
+                cmd = Gam.cr + 'vaulthold matter "' + matname + '" name "' + name + '" corpus ' + corpus + \
+                    ' accounts "' + user + '" starttime ' + start + ' endtime ' + end
+            elif wt == 'ou':
+                ou = input(Color.BOLD + 'Please enter an ou (Case Sensitive):  ' + Color.END)
+                cmd = Gam.cr + 'vaulthold matter "' + matname + '" name "' + name + '" corpus ' + corpus + \
+                    ' orgunit "' + ou + '" starttime ' + start + ' endtime ' + end
+            else:  # Invalid selection. returns to current menu.
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                vault()
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault()
+        elif selection == '5':  # Update Hold
+            vault5()
+        elif selection == '6':  # Hold Info
+            matname = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            name = input(Color.BOLD + 'Please enter the hold name:  ' + Color.END)
+            cmd = Gam.info + 'vaulthold ' + name + ' matter ' + matname
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault()
+        elif selection == '0':  # Back to main menu
+            main_menu()
+        else:  # Invalid selection. returns to current menu.
+            print(Color.RED + Msgs.err + Color.END)
+            print('\n')
+            time.sleep(2)
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault()
+
+
+def vault2():  # Update Vault matter menu
+    while True:
+        print('\n')
+        print(Color.CYAN + 'Update Matter Menu:' + Color.END)
+        print('\n')
+        print('1)   Update Collaborators')
+        print('2)   Update Description')
+        print('3)   Close/Re-open Matter ')
+        print('4)   Delete/Undelete Matter')
+        print('0)   Back')
+        print('\n')
+
+        selection = input(Color.BOLD + Msgs.choose + Color.END)
+
+        if selection == '1':  # Update Collaborators
+            name = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            ar = input(Color.BOLD + 'Add or remove collaborators [add | remove]?  ' + Color.END)
+            coll = input(Color.BOLD + ' Collaborator(s) to add/remove, comma separated(no spaces):  ' + Color.END)
+            cmd = Gam.up + 'vaultmatter "' + name + '" ' + ar + 'collaborators "' + coll + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault2()
+        elif selection == '2':  # Update description
+            name = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            desc = input(Color.BOLD + 'Please enter a short description:  ' + Color.END)
+            cmd = Gam.up + 'vaultmatter "' + name + '" description "' + desc + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault2()
+        elif selection == '3':  # Close/Reopen matter
+            name = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            co = input(Color.BOLD + 'Close or Re-open matter [close | reopen]?  ' + Color.END)
+            cmd = Gam.up + 'vaultmatter "' + name + '" action ' + co
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault2()
+        elif selection == '4':  # Delete/Undelete matter
+            print(Color.RED + 'Matters must be closed before they can be deleted!\n' + Color.END)
+            name = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            co = input(Color.BOLD + 'Delete or Undelete matter [delete | undelete]?  ' + Color.END)
+            cmd = Gam.up + 'vaultmatter "' + name + '" action ' + co
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault2()
+        elif selection == '0':  # Back to previous menu
+            vault()
+        else:  # Invalid selection. returns to current menu.
+            print(Color.RED + Msgs.err + Color.END)
+            print('\n')
+            time.sleep(2)
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault2()
+
+
+def vault5():  # Update vault hold menu
+    while True:
+        print('\n')
+        print(Color.CYAN + 'Update Hold Menu:' + Color.END)
+        print('\n')
+        print('1)   Update Org Unit/User Account(s)')
+        print('2)   Update Start/End time')
+        print('3)   Delete Hold')
+        print('0)   Back')
+        print('\n')
+
+        selection = input(Color.BOLD + Msgs.choose + Color.END)
+
+        if selection == '1':  # Update ou
+            matname = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            name = input(Color.BOLD + 'Please enter the hold name:  ' + Color.END)
+            wt = input(Color.BOLD + 'Individual user(s) or OU [user | ou]?  ' + Color.END)
+            if wt == 'user':
+                user = input(Color.BOLD + 'Please enter 1 or more email addresses separated by commas (no spaces):  '
+                             + Color.END)
+                ar = input(Color.BOLD + 'Add or remove [add | remove]?  ' + Color.END)
+                cmd = Gam.up + 'vaulthold "' + name + '" matter "' + matname + '" ' + ar + 'accounts "' + user + '"'
+            elif wt == 'ou':
+                ou = input(Color.BOLD + 'Please enter an ou (Case Sensitive):  ' + Color.END)
+                cmd = Gam.up + 'vaulthold "' + name + '" matter "' + matname + '"  orgunit "' + ou + '"'
+            else:  # Invalid selection. returns to current menu.
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                vault5()
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault5()
+        elif selection == '2':  # Update start/end
+            matname = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            name = input(Color.BOLD + 'Please enter the hold name:  ' + Color.END)
+            start = input(Color.BOLD + 'What is the new start time [YYYY-MM-DD]?  ' + Color.END)
+            end = input(Color.BOLD + 'What is the new end time [YYYY-MM-DD]?  ' + Color.END)
+            cmd = Gam.up + 'vaulthold "' + name + '" matter "' + matname + '" starttime ' + start + ' endtime ' + end
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault5()
+        elif selection == '3':  # Delete Hold
+            matname = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
+            name = input(Color.BOLD + 'Please enter the hold name:  ' + Color.END)
+            cmd = Gam.de + 'vaulthold "' + name + '" matter "' + matname + '"'
+            os.system(cmd)
+            time.sleep(2)
+            print('\n')
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault5()
+        elif selection == '0':  # Back to previous menu
+            vault()
+        else:  # Invalid selection. returns to current menu.
+            print(Color.RED + Msgs.err + Color.END)
+            print('\n')
+            time.sleep(2)
+            input(Color.GREEN + Msgs.cont + Color.END)
+            vault5()
 
 
 cred()
