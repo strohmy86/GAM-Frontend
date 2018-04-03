@@ -25,7 +25,7 @@
 # This program relies on GAM to function. You must install and configure it before using this program.
 # GAM can be found at: https://github.com/jay0lee/GAM
 
-# See line 589 for a domain specific setting that will need changed.
+# See lines 517, 614, 860, 869, 877, 907, and 915 for a domain specific setting that will need changed.
 
 import os
 import time
@@ -514,7 +514,7 @@ def groups():  # Groups Management Main Menu
 
         if selection == '1':  # Create group menu item
             name = input(Color.BOLD + 'What is the name of the group to be created?' + Color.END)
-            cmd = Gam.gam + ' create group ' + name + '@madisonrams.net'  # PLEASE CHANGE THIS DOMAIN TO MATCH YOURS.
+            cmd = Gam.gam + ' create group ' + name + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -611,8 +611,7 @@ def classroom():  # Classroom Management Main Menu
             who = input(Color.BOLD + 'Is the person a student or a teacher? (Must be lower case) [student | teacher]'
                         + Color.END)
             user = input(Color.BOLD + "What is the person's username? " + Color.END)
-            # Change domain to match yours.
-            cmd = Gam.gam + ' course ' + al + ' ' + act + ' ' + who + ' ' + user + '@madisonrams.net'
+            cmd = Gam.gam + ' course ' + al + ' ' + act + ' ' + who + ' ' + user + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -858,7 +857,7 @@ def classroom3():  # Classroom main menu option 3 submenu
         if selection == '1':  # Invite guardian menu item
             stu = input(Color.BOLD + "What is the student's username? " + Color.END)
             guard = input(Color.BOLD + "What is the guardian's email address? " + Color.END)
-            cmd = Gam.gam + ' create guardianinvite ' + guard + ' ' + stu + '@madisonrams.net'
+            cmd = Gam.gam + ' create guardianinvite ' + guard + ' ' + stu + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -867,7 +866,7 @@ def classroom3():  # Classroom main menu option 3 submenu
         elif selection == '2':  # Delete guardian menu item
             stu = input(Color.BOLD + "What is the student's username? " + Color.END)
             guard = input(Color.BOLD + "What is the guardian's email address? " + Color.END)
-            cmd = Gam.gam + ' delete guardian ' + guard + ' ' + stu + '@madisonrams.net'
+            cmd = Gam.gam + ' delete guardian ' + guard + ' ' + stu + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -875,7 +874,7 @@ def classroom3():  # Classroom main menu option 3 submenu
             classroom3()
         elif selection == '3':  # View a student's guardian(s) menu item
             stu = input(Color.BOLD + "What is the student's username? " + Color.END)
-            cmd = Gam.gam + ' print guardians student ' + stu + '@madisonrams.net'
+            cmd = Gam.gam + ' print guardians student ' + stu + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -905,7 +904,7 @@ def classroom4():  # Classroom main menu option 4 submenu
         selection = input(Color.BOLD + Msgs.choose + Color.END)
         if selection == '1':  # View teacher's courses menu item
             user = input(Color.BOLD + "What is the teacher's username? " + Color.END)
-            cmd = Gam.gam + ' print courses teacher ' + user + '@madisonrams.net'
+            cmd = Gam.gam + ' print courses teacher ' + user + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
@@ -913,7 +912,7 @@ def classroom4():  # Classroom main menu option 4 submenu
             classroom4()
         elif selection == '2':  # View student's courses menu item
             user = input(Color.BOLD + "What is the student's username? " + Color.END)
-            cmd = Gam.gam + ' print courses student ' + user + '@madisonrams.net'
+            cmd = Gam.gam + ' print courses student ' + user + '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
             time.sleep(2)
             print('\n')
