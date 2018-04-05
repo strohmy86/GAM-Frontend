@@ -2034,7 +2034,7 @@ def vault():  # Vault Management
         elif selection == '6':  # Hold Info
             matname = input(Color.BOLD + 'Please enter the matter name:  ' + Color.END)
             name = input(Color.BOLD + 'Please enter the hold name:  ' + Color.END)
-            cmd = Gam.info + 'vaulthold ' + name + ' matter ' + matname
+            cmd = Gam.info + 'vaulthold "' + name + '" matter "' + matname + '"'
             os.system(cmd)
             time.sleep(2)
             print('\n')
