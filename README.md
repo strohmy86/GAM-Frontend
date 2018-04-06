@@ -10,7 +10,7 @@ This program does not yet contain all of GAM's capabilities, but I am regularly 
 I am always looking for suggestions. Please feel free to add your suggestions for features that are not yet included in this program.
 
 
-##Install Instructions
+## Install Instructions
 
 If you wish to convert this python program to a single executable, follow the following instructions:
 
