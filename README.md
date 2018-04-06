@@ -16,8 +16,9 @@ If you wish to convert this python program to a single executable, follow the fo
 
 1. Make your domain-specific changes to `gam.py` as mentioned on line 28.
 2. Make sure that you have the `pyinstaller` module installed:
-...* `sudo pip3 install pyinstaller`
-....* If already installed you should make sure it's up to date: `sudo pip3 install --upgrade pyinstaller`
+    * `sudo pip3 install pyinstaller`
+      * If already installed you should make sure it's up to date: `sudo pip3 install --upgrade pyinstaller`
+    
 3. CD to the `GAM-Frontend` directory
 4. Run the following command: `pyinstaller gam.py --onefile`
 ...* This will create various directories and a `gam.spec` file. The executable will be in the `dist` directory. You can delete all other files and directories and the gam executable will still function fine.
