@@ -17,6 +17,8 @@ If you wish to convert this python program to a single executable, follow the fo
 2. Make sure that you have the `pyinstaller` module installed:
     * `sudo pip3 install pyinstaller`
       * If already installed you should make sure it's up to date: `sudo pip3 install --upgrade pyinstaller`
+    * In Windows run `pip install pyinstaller` from an Administrative pwershell window.
+        * If already installed you should make sure it's up to date: `pip install --upgrade pyinstaller`
 
 3. CD to the `GAM-Frontend` directory
 4. Run the following command: `pyinstaller gam.py --onefile`
