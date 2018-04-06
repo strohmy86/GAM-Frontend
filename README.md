@@ -21,4 +21,4 @@ If you wish to convert this python program to a single executable, follow the fo
     
 3. CD to the `GAM-Frontend` directory
 4. Run the following command: `pyinstaller gam.py --onefile`
-...* This will create various directories and a `gam.spec` file. The executable will be in the `dist` directory. You can delete all other files and directories and the gam executable will still function fine.
+    * This will create various directories and a `gam.spec` file. The executable will be in the `dist` directory. You can delete all other files and directories and the gam executable will still function fine.
