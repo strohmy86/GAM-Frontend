@@ -1294,7 +1294,7 @@ def email1():  # Email main menu option 1 submenu
             email1()
         elif selection == '5':  # Set vacation responder
             sub = input(Color.BOLD + 'Please enter a message subject: ' + Color.END)
-            print(Color.YELLOW + 'Line breaks must be designated using the "\ n" (no space).' + Color.END)
+            print(Color.YELLOW + r'Line breaks must be designated using "\n".' + Color.END)
             mes = input(Color.BOLD + 'Please enter the vacation message: ' + Color.END)
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
