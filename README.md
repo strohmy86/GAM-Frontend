@@ -1,5 +1,6 @@
 # GAM-Frontend
-### Front End Python program for GAM by Jay Lee
+
+## Front End Python program for GAM by Jay Lee
 
 **_You must first install and configure [GAM by Jay Lee](https://github.com/jay0lee/GAM "GAM by Jay Lee")_**. I have included the installer for Gam and python in the [Release](https://github.com/strohmy86/GAM/releases "Releases").
 
@@ -9,7 +10,7 @@ This program does not yet contain all of GAM's capabilities, but I am regularly 
 
 I am always looking for suggestions. Please feel free to add your suggestions for features that are not yet included in this program.
 
-## Install Instructions
+### Install Instructions
 
 If you wish to convert this python program to a single executable, follow the following instructions:
 
