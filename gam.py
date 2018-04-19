@@ -369,10 +369,11 @@ def drive():  # Drive Management Main Menu
         print('\n')
         print("1)   Export a List of a User(s) Drive Files")
         print("2)   Upload a Local File To a Google Drive")
-        print("3)   Delete a User's Drive File")
-        print("4)   View a Team Drive(s)")
-        print('5)   Create a Team Drive')
-        print("6)   Delete a Team Drive")
+        print('3)   Download File(s) from a Google Drive')
+        print("4)   Delete a User's Drive File")
+        print("5)   View a Team Drive(s)")
+        print('6)   Create a Team Drive')
+        print("7)   Delete a Team Drive")
         print('0)   Back')
         print('\n')
 
@@ -433,7 +434,46 @@ def drive():  # Drive Management Main Menu
             time.sleep(2)
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
-        elif selection == '3':  # Delete User's drive file
+        elif selection == '3':  # Download Drive File(s)
+            who = input(Color.BOLD + Msgs.ent + Color.END)
+            quant = input(Color.BOLD + 'Single file or all files [single | all]:  ' + Color.END)
+            loc = input(Color.BOLD + 'Enter the full path to the save location:  ' + Color.END)
+            if quant == 'single':
+                filename = input(Color.BOLD + 'Please enter the filename to download:  ' + Color.END)
+                filename1 = 'drivefilename ' + filename
+            elif quant == 'all':
+                filename = 'query "!me! in owners" '
+                filename1 = filename.replace("!", r"'")
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                drive()
+            if who == 'user':
+                user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
+                user1 = user
+                cmd = Gam.user + user + " get drivefile " + filename1 + ' targetfolder ' + loc + ' format microsoft'
+            elif who == 'group':
+                user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
+                user1 = user
+                cmd = Gam.group + user + " get drivefile " + filename1 + ' targetfolder ' + loc + ' format microsoft'
+            elif who == 'ou':
+                user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
+                user1 = user.split('/')[-1]
+                cmd = Gam.ou + ' "' + user + '" get drivefile ' + filename1 + ' targetfolder ' + loc + \
+                    ' format microsoft'
+            elif who == 'all' or who == 'all users':
+                user1 = 'AllUsers'
+                cmd = Gam.all + " get drivefile " + filename1 + ' targetfolder ' + loc + ' format microsoft'
+            else:
+                print(Color.RED + Msgs.err + Color.END)
+                print('\n')
+                time.sleep(2)
+                input(Color.GREEN + Msgs.cont + Color.END)
+                drive()
+            os.system(cmd)
+        elif selection == '4':  # Delete User's drive file
             user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
             file = input(Color.BOLD + 'Please enter the file ID to be deleted:  ' + Color.END)
             cmd = Gam.user + user + ' delete drivefile ' + file
@@ -442,7 +482,7 @@ def drive():  # Drive Management Main Menu
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
-        elif selection == '4':  # View Team Drives menu item
+        elif selection == '5':  # View Team Drives menu item
             who = input(Color.BOLD + Msgs.ent + Color.END)
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
@@ -477,7 +517,7 @@ def drive():  # Drive Management Main Menu
             print('\n')
             input(Color.GREEN + Msgs.cont + Color.END)
             drive()
-        elif selection == '6':  # Delete user's Team Drive menu item
+        elif selection == '7':  # Delete user's Team Drive menu item
             user = input(Color.BOLD + "Please enter a username: " + Color.END)
             dr_id = input(Color.BOLD + 'What is the Team Drive ID? (Not the name)' + Color.END)
             cmd = Gam.gam + ' user ' + user + ' delete teamdrive ' + dr_id
