@@ -440,7 +440,7 @@ def drive():  # Drive Management Main Menu
             loc = input(Color.BOLD + 'Enter the full path to the save location:  ' + Color.END)
             if quant == 'single':
                 filename = input(Color.BOLD + 'Please enter the filename to download:  ' + Color.END)
-                filename1 = 'drivefilename ' + filename
+                filename1 = 'drivefilename "' + filename + '"'
             elif quant == 'all':
                 filename = 'query "!me! in owners" '
                 filename1 = filename.replace("!", r"'")
@@ -453,11 +453,11 @@ def drive():  # Drive Management Main Menu
             if who == 'user':
                 user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
                 user1 = user
-                cmd = Gam.user + user + " get drivefile " + filename1 + ' targetfolder ' + loc + ' format microsoft'
+                cmd = Gam.user + user + ' get drivefile ' + filename1 + ' targetfolder ' + loc + ' format microsoft'
             elif who == 'group':
                 user = input(Color.BOLD + 'Please enter a group name:  ' + Color.END)
                 user1 = user
-                cmd = Gam.group + user + " get drivefile " + filename1 + ' targetfolder ' + loc + ' format microsoft'
+                cmd = Gam.group + user + ' get drivefile ' + filename1 + ' targetfolder ' + loc + ' format microsoft'
             elif who == 'ou':
                 user = input(Color.BOLD + 'Please enter an OU (Case Sensitive, Full Path):  ' + Color.END)
                 user1 = user.split('/')[-1]
@@ -465,7 +465,7 @@ def drive():  # Drive Management Main Menu
                     ' format microsoft'
             elif who == 'all' or who == 'all users':
                 user1 = 'AllUsers'
-                cmd = Gam.all + " get drivefile " + filename1 + ' targetfolder ' + loc + ' format microsoft'
+                cmd = Gam.all + ' get drivefile ' + filename1 + ' targetfolder ' + loc + ' format microsoft'
             else:
                 print(Color.RED + Msgs.err + Color.END)
                 print('\n')
