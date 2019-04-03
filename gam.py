@@ -180,7 +180,7 @@ def users():  # User Management Main Menu
         elif selection == '5':  # Transfer drive files from one user to another
             user = input(Color.BOLD + 'Please enter username of source drive:  ' + Color.END)
             user2 = input(Color.BOLD + 'Please enter username of destination drive:  ' + Color.END)
-            cmd = Gam.user + user + ' transfer drive ' + user2
+            cmd = Gam.cr + 'datatransfer ' + user + ' gdrive ' + user2 + ' privacy_level shared,private'
             os.system(cmd)
             print('\n')
             time.sleep(2)
