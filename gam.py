@@ -476,7 +476,7 @@ def drive():  # Drive Management Main Menu
         elif selection == '4':  # Delete User's drive file
             user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
             file = input(Color.BOLD + 'Please enter the file ID to be deleted:  ' + Color.END)
-            cmd = Gam.user + user + ' delete drivefile ' + file purge
+            cmd = Gam.user + user + ' delete drivefile ' + file + ' purge'
             os.system(cmd)
             time.sleep(2)
             print('\n')
