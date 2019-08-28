@@ -25,7 +25,7 @@
 # This program relies on GAM to function. You must install and configure it before using this program.
 # GAM can be found at: https://github.com/jay0lee/GAM
 
-# See lines 517, 614, 860, 869, 877, 907, and 915 for a domain specific setting that will need changed.
+# See lines 557, 654, 900, 909, 877, 917, 947 and 955 for a domain specific setting that will need changed.
 
 import os
 import time
@@ -57,8 +57,8 @@ class Gam:  # Various GAM arguments
     de = '~/bin/gam/gam delete '
     cr = '~/bin/gam/gam create '
     info = '~/bin/gam/gam info '
-    
-    
+
+
 class Msgs:  # Various repeated messages
     cont = 'Press ENTER to Continue...'
     err = 'Invalid Option Selected!'
@@ -476,7 +476,7 @@ def drive():  # Drive Management Main Menu
         elif selection == '4':  # Delete User's drive file
             user = input(Color.BOLD + 'Please enter a username:  ' + Color.END)
             file = input(Color.BOLD + 'Please enter the file ID to be deleted:  ' + Color.END)
-            cmd = Gam.user + user + ' delete drivefile ' + file
+            cmd = Gam.user + user + ' delete drivefile ' + file purge
             os.system(cmd)
             time.sleep(2)
             print('\n')
