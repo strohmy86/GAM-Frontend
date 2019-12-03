@@ -1,5 +1,7 @@
 # GAM-Frontend
 
+[![Build Status](https://travis-ci.com/strohmy86/GAM-Frontend.svg?branch=master)](https://travis-ci.com/strohmy86/GAM-Frontend)
+
 ## Front End Python program for [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")
 
 **_You must first install and configure [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")_**. I have included the installer for GAMADV-XTD3 in the [Release](https://github.com/strohmy86/GAM/releases "Releases").
