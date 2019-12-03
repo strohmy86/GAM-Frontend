@@ -2,7 +2,7 @@
 
 ## Front End Python program for [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")
 
-**_You must first install and configure [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")_**.
+**_You must first install and configure [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")_**. I have included the installer for GAMADV-XTD3 in the [Release](https://github.com/strohmy86/GAM/releases "Releases").
 
 This Python program is written in Python 3 and assumes that you are running Linux with the default install location (`~/bin/gamadv-xtd3/`) for GAMADV-XTD3. If your environment is different, you will need to change the code to meet your needs.
 
