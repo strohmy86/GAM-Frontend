@@ -29,7 +29,6 @@
 
 import os
 import time
-import sys
 
 
 class Color:
@@ -46,17 +45,17 @@ class Color:
 
 
 class Gam:  # Various GAM arguments
-    gam = '~/bin/gam/gam '
-    user = '~/bin/gam/gam user '
-    group = '~/bin/gam/gam group '
-    ou = '~/bin/gam/gam ou '
-    all = '~/bin/gam/gam all users '
-    up = '~/bin/gam/gam update '
+    gam = '~/bin/gamadv-xtd3/gam '
+    user = '~/bin/gamadv-xtd3/gam user '
+    group = '~/bin/gamadv-xtd3/gam group '
+    ou = '~/bin/gamadv-xtd3/gam ou '
+    all = '~/bin/gamadv-xtd3/gam all users '
+    up = '~/bin/gamadv-xtd3/gam update '
     add = 'add'
     remove = 'remove'
-    de = '~/bin/gam/gam delete '
-    cr = '~/bin/gam/gam create '
-    info = '~/bin/gam/gam info '
+    de = '~/bin/gamadv-xtd3/gam delete '
+    cr = '~/bin/gamadv-xtd3/gam create '
+    info = '~/bin/gamadv-xtd3/gam info '
 
 
 class Msgs:  # Various repeated messages
@@ -102,7 +101,7 @@ def main_menu():  # Main Menu
 
         selection1 = input(Color.BOLD + Msgs.choose + Color.END)
         if selection1 == '0':
-            sys.exit()
+            exit()
         elif selection1 == '1':
             users()
         elif selection1 == '2':
@@ -161,7 +160,7 @@ def users():  # User Management Main Menu
         elif selection == '3':  # Activate suspended user menu item
             username = input(Color.BOLD + "Please enter a username: " + Color.END)
             cmd = Gam.gam + " update user " + username + " suspended off"
-            cmd2 = "~/bin/gam/gam info user " + username
+            cmd2 = "~/bin/gamadv-xtd3/gam info user " + username
             os.system(cmd)
             time.sleep(2)
             os.system(cmd2)
@@ -704,7 +703,7 @@ def devices():  # Device Management Main Menu
             act = input(Color.BOLD + 'What do you want to update?  [location | asset id]' + Color.END)
             if act == 'location' or act == 'Location' or act == 'loc' or act == 'Loc' or act == 'L' or act == 'l':
                 loc = input(Color.BOLD + 'Enter new location:' + Color.END)
-                cmd2 = '~/bin/gam/gam update cros ' + id2 + ' location "' + loc + '"'
+                cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + ' location "' + loc + '"'
                 os.system(cmd2)
                 time.sleep(2)
                 print('\n')
@@ -715,7 +714,7 @@ def devices():  # Device Management Main Menu
             elif act == 'asset' or act == 'asset id' or act == 'assetid' or act == 'Asset' or act == 'Asset Id' or \
                     act == 'Asset ID' or act == 'Asset id' or act == 'A' or act == 'a':
                 asset = input(Color.BOLD + 'Enter new Asset ID:' + Color.END)
-                cmd2 = '~/bin/gam/gam update cros ' + id2 + ' assetid "' + asset + '"'
+                cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + ' assetid "' + asset + '"'
                 os.system(cmd2)
                 time.sleep(2)
                 print('\n')
@@ -1011,7 +1010,7 @@ def devices3():  # Devices main menu option 3 submenu
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            cmd2 = '~/bin/gam/gam info cros ' + id2 + ' full'
+            cmd2 = '~/bin/gamadv-xtd3/gam info cros ' + id2 + ' full'
             os.system(cmd2)
             time.sleep(2)
             f.close()
@@ -1070,7 +1069,7 @@ def devices4():  # Devices main menu option 4 submenu
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            cmd2 = '~/bin/gam/gam update cros ' + id2 + ' action disable acknowledge_device_touch_requirement'
+            cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + ' action disable acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
             f.close()
@@ -1086,7 +1085,7 @@ def devices4():  # Devices main menu option 4 submenu
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            cmd2 = '~/bin/gam/gam update cros ' + id2 + ' action reenable acknowledge_device_touch_requirement'
+            cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + ' action reenable acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
             f.close()
@@ -1126,7 +1125,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            cmd2 = '~/bin/gam/gam update cros ' + id2 + \
+            cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + \
                    ' action deprovision_same_model_replace acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
@@ -1143,7 +1142,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            cmd2 = '~/bin/gam/gam update cros ' + id2 + \
+            cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + \
                    ' action deprovision_different_model_replace acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
@@ -1159,7 +1158,7 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             time.sleep(1)
             f = open('id.txt')
             id2 = f.readlines()[-1]
-            cmd2 = '~/bin/gam/gam update cros ' + id2 + \
+            cmd2 = '~/bin/gamadv-xtd3/gam update cros ' + id2 + \
                    ' action deprovision_retiring_device acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
