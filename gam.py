@@ -31,6 +31,7 @@ import os
 import time
 
 
+
 class Color:
     PURPLE = '\033[95m'
     CYAN = '\033[96m'
