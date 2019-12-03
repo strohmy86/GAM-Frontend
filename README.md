@@ -1,12 +1,12 @@
 # GAM-Frontend
 
-## Front End Python program for GAM by Jay Lee
+## Front End Python program for [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")
 
-**_You must first install and configure [GAM by Jay Lee](https://github.com/jay0lee/GAM "GAM by Jay Lee")_**. I have included the installer for Gam and python in the [Release](https://github.com/strohmy86/GAM/releases "Releases").
+**_You must first install and configure [GAMADV-XTD3 by Ross Scroggs](https://github.com/taers232c/GAMADV-XTD3 "GAMADV-XTD3 by Ross Scroggs")_**.
 
-This Python program is written in Python 3 and assumes that you are running Linux with the default install location (`~/bin/gam/`) for GAM. If your environment is different, you will need to change the code to meet your needs.
+This Python program is written in Python 3 and assumes that you are running Linux with the default install location (`~/bin/gamadv-xtd3/`) for GAMADV-XTD3. If your environment is different, you will need to change the code to meet your needs.
 
-This program does not yet contain all of GAM's capabilities, but I am regularly adding functionality. Check back often for updates and added features.
+This program does not yet contain all of GAMADV-XTD3's capabilities, but I am regularly adding functionality. Check back often for updates and added features.
 
 I am always looking for suggestions. Please feel free to add your suggestions for features that are not yet included in this program.
 
