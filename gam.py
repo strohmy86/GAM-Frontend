@@ -2,7 +2,7 @@
 
 # MIT License
 
-# Copyright (c) 2018 Luke Strohm
+# Copyright (c) 2019 Luke Strohm
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# This program relies on GAM to function. You must install and configure it
-# before using this program.
+# This program relies on GAMADV-XTD3 to function. You must install and
+# configure it before using this program.
 
 # See lines 689, 785, 1013, 1023, 1032, 1058, and 1067
 # for a domain specific setting that will need changed.
