@@ -68,18 +68,18 @@ class Msgs:  # Various repeated messages
 
 
 def cred():
-    print(Color.DARKCYAN+'\n')
-    print("*********************************")
-    print("*     Python 3 Frontend for     *")
-    print("*  GAMADV-XTD3 by Ross Scroggs  *")
-    print("*                               *")
-    print("*   Written and maintained by   *")
-    print("*          Luke Strohm          *")
-    print("*     strohm.luke@gmail.com     *")
-    print("*  https://github.com/strohmy86 *")
-    print("*                               *")
-    print("*********************************")
-    print('\n'+Color.END)
+    print(Color.DARKCYAN+'\n' +
+          '*********************************\n' +
+          '*     Python 3 Frontend for     *\n' +
+          '*  GAMADV-XTD3 by Ross Scroggs  *\n' +
+          '*                               *\n' +
+          '*   Written and maintained by   *\n' +
+          '*          Luke Strohm          *\n' +
+          '*     strohm.luke@gmail.com     *\n' +
+          '*  https://github.com/strohmy86 *\n' +
+          '*                               *\n' +
+          '*********************************\n' +
+          '\n'+Color.END)
 
 
 def main_menu():  # Main Menu
@@ -135,26 +135,26 @@ def users():  # User Management Main Menu
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # User Info menu item
-            username = input(Color.BOLD+"Please enter a username: " +
+            username = input(Color.BOLD+'Please enter a username: ' +
                              Color.END)
-            cmd = Gam.g+"info user "+username
+            cmd = Gam.g+'info user '+username
             os.system(cmd)
             time.sleep(2)
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             users()
         elif selection == '2':  # Export users menu item
-            cmd = Gam.g+"redirect csv ~/Userlist.csv multiprocess print " +\
-                "users allfields"
+            cmd = Gam.g+'redirect csv ~/Userlist.csv multiprocess print ' +\
+                'users allfields'
             os.system(cmd)
-            print(Color.YELLOW+"\nUserlist.csv saved."+Color.END)
+            print(Color.YELLOW+'\nUserlist.csv saved.'+Color.END)
             time.sleep(2)
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             users()
         elif selection == '3':  # Activate suspended user menu item
-            username = input(Color.BOLD+"Please enter a username: " +
+            username = input(Color.BOLD+'Please enter a username: ' +
                              Color.END)
-            cmd = Gam.g+" update user "+username+" suspended off"
-            cmd2 = "~/bin/gamadv-xtd3/gam info user "+username
+            cmd = Gam.g+' update user '+username+' suspended off'
+            cmd2 = '~/bin/gamadv-xtd3/gam info user '+username
             os.system(cmd)
             time.sleep(2)
             os.system(cmd2)
@@ -162,8 +162,8 @@ def users():  # User Management Main Menu
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             users()
         elif selection == '4':  # Suspend a user menu item
-            username = input(Color.BOLD+"Enter a username: "+Color.END)
-            cmd = Gam.g+" update user "+username+" suspended on"
+            username = input(Color.BOLD+'Enter a username: '+Color.END)
+            cmd = Gam.g+' update user '+username+' suspended on'
             os.system(cmd)
             time.sleep(2)
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
@@ -180,8 +180,8 @@ def users():  # User Management Main Menu
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             users()
         elif selection == '6':  # Manage Verificaion Codes
-            user = input(Color.BOLD+"Enter a username: "+Color.END)
-            act = input(Color.BOLD+"Show or Delete Codes?  [show | del]  " +
+            user = input(Color.BOLD+'Enter a username: '+Color.END)
+            act = input(Color.BOLD+'Show or Delete Codes?  [show | del]  ' +
                         Color.END)
             cmd = Gam.u+user+' '+act+' backupcodes'
             os.system(cmd)
@@ -327,11 +327,11 @@ def calendar():  # Calendar Management Main Menu
     while True:
         print(Color.PURPLE+'\nCalendar Management Menu:\n'+Color.END)
         print('1)   Show Permissions For a Calendar')
-        print("2)   Add or Remove Calendar Permissions")
+        print('2)   Add or Remove Calendar Permissions')
         print('3)   Delete a Calendar Event')
-        print("4)   List a User's Calendar(s)")
-        print("5)   Delete a User's Calendar (Can't delete default calendar)")
-        print("6)   Add a Calendar to a User")
+        print('4)   List a User\'s Calendar(s)')
+        print('5)   Delete a User\'s Calendar (Can\'t delete default calendar)')
+        print('6)   Add a Calendar to a User')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # Calendar permissions menu item
@@ -489,13 +489,13 @@ def calendar6():  # Calendar menu option 6
 def drive():  # Drive Management Main Menu
     while True:
         print(Color.PURPLE+'\nDrive Management Menu:\n'+Color.END)
-        print("1)   Export a List of a User(s) Drive Files")
-        print("2)   Upload a Local File To a Google Drive")
+        print('1)   Export a List of a User(s) Drive Files')
+        print('2)   Upload a Local File To a Google Drive')
         print('3)   Download File(s) from a Google Drive')
-        print("4)   Delete a User's Drive File")
-        print("5)   View a Shared Drive(s)")
+        print('4)   Delete a User\'s Drive File')
+        print('5)   View a Shared Drive(s)')
         print('6)   Create a Shared Drive')
-        print("7)   Delete a Shared Drive")
+        print('7)   Delete a Shared Drive')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # Export file list menu item
@@ -516,7 +516,7 @@ def drive():  # Drive Management Main Menu
         elif selection == '5':  # View Shared Drives menu item
             drive5()
         elif selection == '6':  # Create team drive for user menu item
-            user = input(Color.BOLD+"Please enter a username: "+Color.END)
+            user = input(Color.BOLD+'Please enter a username: '+Color.END)
             name = input(Color.BOLD+'What is the name of the Shared Drive?' +
                          Color.END)
             cmd = Gam.g+' user '+user+' add teamdrive "'+name+'"'
@@ -525,7 +525,7 @@ def drive():  # Drive Management Main Menu
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             drive()
         elif selection == '7':  # Delete user's Shared Drive menu item
-            user = input(Color.BOLD+"Please enter a username: "+Color.END)
+            user = input(Color.BOLD+'Please enter a username: '+Color.END)
             dr_id = input(Color.BOLD+'What is the Shared Drive ID? ' +
                           '(Not the name)'+Color.END)
             cmd = Gam.g+' user '+user+' delete teamdrive '+dr_id
@@ -547,8 +547,8 @@ def drive1():  # Drive menu option 1
     if who == 'user' or who == 'group':
         user = input(Color.BOLD+'Enter a name:  '+Color.END)
         user1 = user
-        cmd = Gam.g+"redirect csv ~/"+user+"-filelist.csv " +\
-            "multiprocess "+who+" "+user+" print filelist allfields"
+        cmd = Gam.g+'redirect csv ~/'+user+'-filelist.csv ' +\
+            'multiprocess '+who+' '+user+' print filelist allfields'
     elif who == 'ou':
         user = input(Color.BOLD+'Please enter an OU (Case Sensitive' +
                      ', Full Path):  '+Color.END)
@@ -572,30 +572,30 @@ def drive1():  # Drive menu option 1
 
 
 def drive2():  # Drive menu option 2
-    filename = input(Color.BOLD+"Please enter the full path to the" +
-                     " file you wish to upload: (Case Sensitive):  " +
+    filename = input(Color.BOLD+'Please enter the full path to the' +
+                     ' file you wish to upload: (Case Sensitive):  ' +
                      Color.END)
     who = input(Color.BOLD+Msgs.ent+Color.END)
     if who == 'user':
         user = input(Color.BOLD+'Please enter a username:  '+Color.END)
-        cmd = Gam.u+user+" add drivefile localfile "+filename
+        cmd = Gam.u+user+' add drivefile localfile '+filename
     elif who == 'group':
         user = input(Color.BOLD+'Please enter a group name:  ' +
                      Color.END)
-        cmd = Gam.gr+user+" add drivefile localfile "+filename
+        cmd = Gam.gr+user+' add drivefile localfile '+filename
     elif who == 'ou':
         user = input(Color.BOLD+'Please enter an OU (Case Sensitive' +
                      ', Full Path):  '+Color.END)
-        cmd = Gam.ou+user+" add drivefile localfile "+filename
+        cmd = Gam.ou+user+' add drivefile localfile '+filename
     elif who == 'all' or who == 'all users':
-        cmd = Gam.a+" add drivefile localfile "+filename
+        cmd = Gam.a+' add drivefile localfile '+filename
     else:
         print(Color.RED+Msgs.err+'\n'+Color.END)
         time.sleep(2)
         input(Color.GREEN+'\n'+Msgs.cont+Color.END)
         drive()
     os.system(cmd)
-    print("File uploaded successfully")
+    print('File uploaded successfully')
     time.sleep(2)
     input(Color.GREEN+'\n'+Msgs.cont+Color.END)
     drive()
@@ -705,7 +705,7 @@ def groups():  # Groups Management Main Menu
             groups3()
         elif selection == '4':  # Update user role menu item
             name = input(Color.BOLD+'What is the email address of the group?')
-            user = input(Color.BOLD+"What user's role will be modified? " +
+            user = input(Color.BOLD+'What user\'s role will be modified? ' +
                          Color.END)
             perm = input(Color.BOLD+'New role to assign (Must be in Lower ' +
                          'Case): [owner | member | manager]'+Color.END)
@@ -779,7 +779,7 @@ def classroom():  # Classroom Management Main Menu
                         '(Must be lower case) [add | remove]'+Color.END)
             who = input(Color.BOLD+'Is the person a student or a teacher? ' +
                         '(Must be lower case) [student | teacher]'+Color.END)
-            user = input(Color.BOLD+"What is the person's username? " +
+            user = input(Color.BOLD+'What is the person\'s username? ' +
                          Color.END)
             cmd = Gam.g+' course '+al+' '+act+' '+who+' '+user +\
                 '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
@@ -887,7 +887,7 @@ def classroom1():  # Manage Courses
             sec = input(Color.BOLD+'What is the course section?(Numbers only)')
             head = input(Color.BOLD+'What is the heading?'+Color.END)
             room = input(Color.BOLD+'What room is the class in? (No spaces')
-            teach = input(Color.BOLD+"What is the teacher's username? " +
+            teach = input(Color.BOLD+'What is the teacher\'s username? ' +
                           Color.END)
             cmd = Gam.g+' create course alias '+al+' name "'+name +\
                 '" section '+sec+' heading "'+head+'" room '+room +\
@@ -1001,14 +1001,14 @@ def classroom3():  # Classroom main menu option 3 submenu
         print(Color.CYAN+'\nGuardian Management Menu:\n'+Color.END)
         print('1)   Invite Guardian')
         print('2)   Delete Guardian')
-        print("3)   View a Student's Guardian(s)")
+        print('3)   View a Student\'s Guardian(s)')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # Invite guardian menu item
-            stu = input(Color.BOLD+"What is the student's username? " +
+            stu = input(Color.BOLD+'What is the student\'s username? ' +
                         Color.END)
-            guard = input(Color.BOLD+"What is the guardian's email " +
-                          "address? "+Color.END)
+            guard = input(Color.BOLD+'What is the guardian\'s email ' +
+                          'address? '+Color.END)
             cmd = Gam.g+' create guardianinvite '+guard+' '+stu +\
                 '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
@@ -1016,9 +1016,9 @@ def classroom3():  # Classroom main menu option 3 submenu
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             classroom3()
         elif selection == '2':  # Delete guardian menu item
-            stu = input(Color.BOLD+"What is the student's username? " +
+            stu = input(Color.BOLD+'What is the student\'s username? ' +
                         Color.END)
-            guard = input(Color.BOLD+"Guardian's email address? "+Color.END)
+            guard = input(Color.BOLD+'Guardian\'s email address? '+Color.END)
             cmd = Gam.g+' delete guardian '+guard+' '+stu +\
                 '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
             os.system(cmd)
@@ -1026,7 +1026,7 @@ def classroom3():  # Classroom main menu option 3 submenu
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             classroom3()
         elif selection == '3':  # View a student's guardian(s) menu item
-            stu = input(Color.BOLD+"What is the student's username? " +
+            stu = input(Color.BOLD+'What is the student\'s username? ' +
                         Color.END)
             cmd = Gam.g+' print guardians student '+stu +\
                 '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
@@ -1046,13 +1046,13 @@ def classroom3():  # Classroom main menu option 3 submenu
 def classroom4():  # Classroom main menu option 4 submenu
     while True:
         print(Color.CYAN+'\nClassroom Reports Menu:\n'+Color.END)
-        print("1)   View a Teacher's Courses")
-        print("2)   View a Student's Courses")
-        print("3)   View a Course's Participants")
+        print('1)   View a Teacher\'s Courses')
+        print('2)   View a Student\'s Courses')
+        print('3)   View a Course\'s Participants')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # View teacher's courses menu item
-            user = input(Color.BOLD+"What is the teacher's username? " +
+            user = input(Color.BOLD+'What is the teacher\'s username? ' +
                          Color.END)
             cmd = Gam.g+' print courses teacher '+user +\
                 '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
@@ -1061,7 +1061,7 @@ def classroom4():  # Classroom main menu option 4 submenu
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             classroom4()
         elif selection == '2':  # View student's courses menu item
-            user = input(Color.BOLD+"What is the student's username? " +
+            user = input(Color.BOLD+'What is the student\'s username? ' +
                          Color.END)
             cmd = Gam.g+' print courses student '+user +\
                 '@madisonrams.net'  # CHANGE THIS DOMAIN TO MATCH YOURS.
@@ -1308,9 +1308,9 @@ def email1():  # Email main menu option 1 submenu
         print('1)   Set User Signature From Text File')
         print('2)   Set User Signature From HTML File')
         print('3)   Set User Signature Manually')
-        print("4)   View a User(s) Signature")
-        print("5)   Set a User(s) Vacation Responder")
-        print("6)   Turn off a User(s) Vacation Responder")
+        print('4)   View a User(s) Signature')
+        print('5)   Set a User(s) Vacation Responder')
+        print('6)   Turn off a User(s) Vacation Responder')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # Set sig from txt file
@@ -1502,10 +1502,10 @@ def email2():  # Email main menu option 2 menu
     while True:
         print(Color.CYAN+'\nLabels and Filters Menu:\n'+Color.END)
         print('1)   Create a Label')
-        print("2)   View User(s) Labels")
+        print('2)   View User(s) Labels')
         print('3)   Delete a Label')
         print('4)   Create a Filter')
-        print("5)   View User(s) Filters")
+        print('5)   View User(s) Filters')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # Create a label
