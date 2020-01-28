@@ -330,7 +330,8 @@ def calendar():  # Calendar Management Main Menu
         print('2)   Add or Remove Calendar Permissions')
         print('3)   Delete a Calendar Event')
         print('4)   List a User\'s Calendar(s)')
-        print('5)   Delete a User\'s Calendar (Can\'t delete default calendar)')
+        print('5)   Delete a User\'s Calendar (Can\'t delete default ' +
+              'calendar)')
         print('6)   Add a Calendar to a User')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
