@@ -616,6 +616,7 @@ def drive3():  # Drive menu option 3
         filename = 'query "!me! in owners" '
         filename1 = filename.replace("!", r"'")
     else:
+        filename1 = None  # To fix the possibility of an unbound variable
         print(Color.RED+Msgs.err+'\n'+Color.END)
         time.sleep(2)
         input(Color.GREEN+'\n'+Msgs.cont+Color.END)
@@ -637,6 +638,7 @@ def drive3():  # Drive menu option 3
         cmd = Gam.a+' get drivefile '+filename1+' targetfolder '+loc +\
             ' format microsoft'
     else:
+        cmd = None  # To fix the possibility of an unbound variable
         print(Color.RED+Msgs.err+'\n'+Color.END)
         time.sleep(2)
         input(Color.GREEN+'\n'+Msgs.cont+Color.END)
@@ -809,12 +811,14 @@ def devices():  # Device Management Main Menu
         print('2)   Update Device Info')
         print('3)   Export Device Info')
         print('4)   Disable, De-provision, or Re-Enable a Device')
+        print('5)   Print Chrome Device Activity to CSV file')
+        print('6)   Move Chrome Device')
         print('\n0)   Back\n')
         selection = input(Color.BOLD+Msgs.choose+Color.END)
         if selection == '1':  # Get ID menu item
             cr_id = input(Color.BOLD+'Please enter the Chrome Device ' +
                           'Serial Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+'print cros query "id:'+cr_id+'"'
+            cmd = Gam.g+'info cros cros_sn '+cr_id
             os.system(cmd)
             time.sleep(2)
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
@@ -822,47 +826,41 @@ def devices():  # Device Management Main Menu
         elif selection == '2':  # Update info menu item
             cr_id = input(Color.BOLD+'Please enter the Chrome Device ' +
                           'Serial Number:'+Color.END)
-            cmd = Gam.g+' print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
             time.sleep(1)
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
             act = input(Color.BOLD+'What do you want to update? [location ' +
                         '| asset id]'+Color.END)
             if act == 'location' or act == 'Location' or act == 'loc' or \
                     act == 'Loc' or act == 'L' or act == 'l':
                 loc = input(Color.BOLD+'Enter new location:'+Color.END)
-                cmd2 = Gam.g+'update cros '+id2+' location "'+loc+'"'
+                cmd2 = Gam.g+'update cros cros_sn '+cr_id+' location "'+loc+'"'
                 os.system(cmd2)
                 time.sleep(2)
                 input(Color.GREEN+'\n'+Msgs.cont+Color.END)
-                f.close()
                 os.system('rm -rf id.txt')
                 devices()
             elif act == 'asset' or act == 'asset id' or act == 'assetid' or \
                     act == 'Asset' or act == 'Asset Id' or act == 'Asset ID' \
                     or act == 'Asset id' or act == 'A' or act == 'a':
                 asset = input(Color.BOLD+'Enter new Asset ID:'+Color.END)
-                cmd2 = Gam.g+'update cros '+id2+' assetid "'+asset+'"'
+                cmd2 = Gam.g+'update cros cros_sn '+cr_id+' assetid "'+asset+'"'
                 os.system(cmd2)
                 time.sleep(2)
                 input(Color.GREEN+'\n'+Msgs.cont+Color.END)
-                f.close()
                 os.system('rm -rf id.txt')
                 devices()
             else:
                 print(Color.RED+Msgs.err+'\n'+Color.END)
                 time.sleep(1)
-                f.close()
-                os.system('rm -rf id.txt')
                 input(Color.GREEN+'\n'+Msgs.cont+Color.END)
                 devices()
         elif selection == '3':  # Export device info menu item.
             devices3()
         elif selection == '4':  # Disable/de-provision/re-enable menu item.
             devices4()
+        elif selection == '5':  # Export device activity to csv file.
+            devices5()
+        elif selection == '6':  # Move Chrome Device
+            devices6()
         elif selection == '0':  # Back to main menu
             main_menu()
         else:  # Invalid Selection. Returns to current menu
@@ -1112,17 +1110,9 @@ def devices3():  # Devices main menu option 3 submenu
         if selection == '1':  # View device info menu item
             cr_id = input(Color.BOLD+'Enter the Chrome Device Serial ' +
                           'Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+'print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
-            cmd2 = Gam.g+'info cros '+id2+' full'
+            cmd2 = Gam.g+'info cros cros_sn '+cr_id+' full'
             os.system(cmd2)
             time.sleep(2)
-            f.close()
-            os.system('rm -rf id.txt')
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices3()
         elif selection == '2':  # Export devices in ou menu item
@@ -1165,35 +1155,19 @@ def devices4():  # Devices main menu option 4 submenu
         if selection == '1':  # Disable menu item
             cr_id = input(Color.BOLD+'Please enter the Chrome Device ' +
                           'Serial Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+' print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
-            cmd2 = Gam.g+'update cros '+id2+' action disable ' +\
+            cmd2 = Gam.g+'update cros cros_sn '+cr_id+' action disable ' +\
                 'acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
-            f.close()
-            os.system('rm -rf id.txt')
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices4()
         elif selection == '2':  # Re-enable menu item
             cr_id = input(Color.BOLD+'Enter the Chrome Device Serial ' +
                           'Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+' print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
-            cmd2 = Gam.up+'cros '+id2+' action reenable ' +\
+            cmd2 = Gam.up+'cros cros_sn '+cr_id+' action reenable ' +\
                 'acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
-            f.close()
-            os.system('rm -rf id.txt')
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices4()
         elif selection == '3':  # Deprovision menu item.
@@ -1218,51 +1192,28 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
         if selection == '1':  # Replace with same model menu item
             cr_id = input(Color.BOLD+'Please enter the Chrome Device ' +
                           'Serial Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+' print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
-            cmd2 = Gam.up+'cros '+id2+' action deprovision_same_model_' +\
+            cmd2 = Gam.up+'cros cros_sn '+cr_id+' action deprovision_same_model_' +\
                 'replace acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
-            f.close()
-            os.system('rm -rf id.txt')
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices4_3()
         elif selection == '2':  # Replace with diff model menu item
             cr_id = input(Color.BOLD+'Please enter the Chrome Device Serial ' +
                           'Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+' print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
-            cmd2 = Gam.up+'cros '+id2+' action deprovision_different_model_' +\
+            cmd2 = Gam.up+'cros cros_sn '+cr_id+' action deprovision_different_model_' +\
                 'replace acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
-            f.close()
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices4_3()
         elif selection == '3':  # Retire menu item
             cr_id = input(Color.BOLD+'Please enter the Chrome Device Serial ' +
                           'Number (Case sensitive):'+Color.END)
-            cmd = Gam.g+' print cros query "id:'+cr_id+'" > id.txt'
-            print('Looking up the device ID...')
-            os.system(cmd)
-            time.sleep(1)
-            f = open('id.txt')
-            id2 = f.readlines()[-1]
-            cmd2 = Gam.up+'cros '+id2+' action deprovision_retiring_device ' +\
+            cmd2 = Gam.up+'cros cros_sn '+cr_id+' action deprovision_retiring_device ' +\
                 'acknowledge_device_touch_requirement'
             os.system(cmd2)
             time.sleep(2)
-            f.close()
-            os.system('rm -rf id.txt')
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices4_3()
         elif selection == '0':  # Return to previous menu
@@ -1272,6 +1223,56 @@ def devices4_3():  # Devices Main menu option 4. submenu 3
             time.sleep(2)
             input(Color.GREEN+'\n'+Msgs.cont+Color.END)
             devices4_3()
+
+
+def devices5():  # Print Chrome Device Activity to CSV file.
+    action = input(
+        Color.BOLD+'Entity to apply to: [single | ou | all]:  '+Color.END)
+    if action == 'single':
+        cr_id = input(Color.BOLD+'Please enter the Chrome Device Serial ' +
+                      'Number (Case sensitive):  '+Color.END)
+        cmd = Gam.g+'redirect csv ~/'+cr_id + \
+            '-activity.csv multiprocess cros cros_sn '+cr_id+' print crosactivity all'
+        os.system(cmd)
+        print(Color.CYAN+'\nFile saved as ~/'+cr_id+'activity.csv'+Color.END)
+        time.sleep(1)
+        input(Color.GREEN+'\n'+Msgs.cont+Color.END)
+        devices()
+    elif action == 'ou':
+        ou = input(
+            Color.BOLD+'Please enter the entire OU path (Case sensitive):  '+Color.END)
+        cmd = Gam.g+'redirect csv ~/'+ou.replace('/', '_').lstrip(
+            '_')+'-cros_activity.csv multiprocess cros_ou_and_children '+ou+' print crosactivity all'
+        os.system(cmd)
+        print(Color.CYAN+'\nFile saved as ~/' +
+              ou.replace('/', '_').lstrip('_')+'-cros_activity.csv'+Color.END)
+        time.sleep(1)
+        input(Color.GREEN+'\n'+Msgs.cont+Color.END)
+        devices()
+    elif action == 'all':
+        cmd = Gam.g+'redirect csv ~/All_cros_activity.csv multiprocess print crosactivity all'
+        os.system(cmd)
+        print(Color.CYAN+'\nFile saved as ~/All_cros_activity.csv'+Color.END)
+        time.sleep(1)
+        input(Color.GREEN+'\n'+Msgs.cont+Color.END)
+        devices()
+    else:
+        print(Color.RED+Msgs.err+'\n'+Color.END)
+        time.sleep(2)
+        input(Color.GREEN+'\n'+Msgs.cont+Color.END)
+        devices()
+
+
+def devices6():  # Move Chrome Device
+    cr_id = input(Color.BOLD+'Please enter the Chrome Device Serial ' +
+                  'Number (Case sensitive):  '+Color.END)
+    ou = input(
+        Color.BOLD+'Please enter the entire OU path (Case sensitive):  '+Color.END)
+    cmd = Gam.g+'update cros cros_sn '+cr_id+' ou '+ou+' quickcrosmove true'
+    os.system(cmd)
+    time.sleep(1)
+    input(Color.GREEN+'\n'+Msgs.cont+Color.END)
+    devices()
 
 
 def email():  # Email Management main menu
