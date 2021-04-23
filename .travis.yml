@@ -1,19 +1,21 @@
 language: python
 jobs:
   include:
-    - name: "Python 3.8 on Focal Linux"
+    - name: "Python 3.9 on Focal Linux"
       os: linux
       dist: focal
-      python: 3.8
-    - name: "Python 3.8.0 on Windows"
+      python: 3.9
+    - name: "Python 3.9.0 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: python' is an error on Travis CI Windows
       before_install:
-        - choco install python --version 3.8.0
+        - choco install python --version 3.9.0
         - python -m pip install --upgrade pip
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
 install:
   - pip3 install --upgrade pip  
   - pip3 install --upgrade pyinstaller
+  - pip3 install --upgrade flake8
 script:
+  - flake8 . --count --max-complexity=12 --statistics
   - pyinstaller gam.py --onefile
